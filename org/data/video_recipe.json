@@ -1,0 +1,63 @@
+{
+  "updated": "2026-08-12",
+  "engine": "Higgsfield (Claude session MCP)",
+  "video": {
+    "model": "seedance_2_0",
+    "aspect_ratio": "9:16",
+    "duration_s": [
+      5,
+      15
+    ],
+    "generate_audio": true,
+    "image_references": "per persona 3 refs: [face_real, face2_real, body_real] from /opt/jsw-ai/content/videorefs/<slug>_*.png",
+    "voice_lock": "audio_references = /opt/jsw-ai/content/voicerefs/<slug>.mp3 (voice-conditioning; same sample => same voice). madison locked; others pending Sam voice pick",
+    "accents_in_prompt": {
+      "charlotte": "British",
+      "sienna": "Australian",
+      "madison": "American",
+      "camille": "French",
+      "valentina": "Miami Latina",
+      "gabriela": "Miami Latina"
+    }
+  },
+  "photo": {
+    "model": "seedream_v5_pro",
+    "aspect_ratio": "4:5",
+    "image_references": "[face_real, body_real]"
+  },
+  "realism_suffix": "Candid iPhone photo, natural daylight, pore-level skin texture, natural tan, relaxed natural body. NOT airbrushed, NOT glossy, NOT plastic, NOT cinematic.",
+  "degloss": "ONLY when a persona reads glossy: gentle tan-preserving seedream_v5_pro i2i on the FACE ref (reduce sheen + add pores, KEEP tan/identity 1:1). NEVER the heavy pass (it washed out tan). gabriela_face_real is already gently de-glossed.",
+  "ref_swap_fixed": [
+    "valentina",
+    "gabriela"
+  ],
+  "notes": "Source memory/refs <slug>_face.png and _body.png were SWAPPED for valentina & gabriela (face file was a full-body shot). videorefs corrected 2026-08-12; old kit backed up at videorefs/_pre_fix_20260812/. madison BODY ref is a near-nude studio shot -> for bikini PHOTOS use face ref only + explicit colored suit to avoid nsfw filter.",
+  "photo_engine": {
+    "model": "soul_2",
+    "note": "generate photos from trained Soul (soul_id) for locked face+body+proportions; no per-image drift"
+  },
+  "souls": {
+    "charlotte": "9a55147c-01b7-4160-9767-5c77077259d9",
+    "camille": "01d09bd2-7160-49aa-8540-b3f5d89d803c",
+    "valentina": "fa97f078-550a-4126-9a79-7ed4dc027139",
+    "gabriela": "f4d6ae5e-9b8a-4d0c-94f5-4bf7dc3bcf79",
+    "madison": "b6bfeec5-7d03-498d-b057-8d2a4a440635",
+    "sienna": "f9700355-bf71-4d6f-bec5-e87142075794"
+  },
+  "souls_note": "Trained soul_2 models per persona (the '... JSW' ones). Old duplicate/wrong souls (incl. a REDHEAD mislabeled 'Camille Dubois') exist in the account and must NOT be used; delete them.",
+  "souls_status": "all 6 trained + Sam-approved (soul_2). madison=curvy retrain. generate via model soul_2 + soul_id.",
+  "voices_locked": {
+    "sienna": "/opt/jsw-ai/content/voicerefs/sienna.mp3",
+    "charlotte": "/opt/jsw-ai/content/voicerefs/charlotte.mp3",
+    "madison": "/opt/jsw-ai/content/voicerefs/madison.mp3",
+    "camille": "/opt/jsw-ai/content/voicerefs/camille.mp3",
+    "valentina": "/opt/jsw-ai/content/voicerefs/valentina.mp3",
+    "gabriela": "/opt/jsw-ai/content/voicerefs/gabriela.mp3"
+  },
+  "voices_note": "All 6 persona voices locked + Sam-approved. Pass as audio_references for talking clips (voice-conditioning).",
+  "degloss_personas": [
+    "camille",
+    "valentina"
+  ],
+  "degloss_note": "camille & valentina Souls still render slightly glossy: run the gentle tan-preserving de-gloss (seedream_v5_pro i2i) on any Soul frame BEFORE animating/publishing. (gabriela already de-glossed in-model.)"
+}
