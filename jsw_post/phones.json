@@ -1,9 +1,9 @@
 {
- "_note": "Model -> GeeLark cloud phone id (envId). Fill once Sam confirms where the 10 phones are. Proxy per model = same Decodo port as AdsPower (/etc/jsw/proxies.json); never change a model's IP.",
- "sienna":    {"envId": null},
- "charlotte": {"envId": null},
- "madison":   {"envId": null},
- "gabriela":  {"envId": null},
- "camille":   {"envId": null},
- "valentina": {"envId": null}
+ "_note": "Model -> GeeLark cloud phone id (envId). Created 2026-10-24, monthly (chargeMode 1), group 'JSW models'. Proxy per model = same Decodo port as AdsPower (/etc/jsw/proxies.json); never change a model's IP.",
+ "sienna":    {"envId": "643140921407308131", "proxyPort": 10008},
+ "charlotte": {"envId": "643140921407373667", "proxyPort": 10007},
+ "madison":   {"envId": "643140921407439203", "proxyPort": 10001},
+ "gabriela":  {"envId": "643140921407504739", "proxyPort": 10004},
+ "camille":   {"envId": "643140921407570275", "proxyPort": 10005},
+ "valentina": {"envId": "643140921407635811", "proxyPort": 10006}
 }

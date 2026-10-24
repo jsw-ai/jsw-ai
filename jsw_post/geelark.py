@@ -58,18 +58,30 @@ def _token():
                                    env=env).decode().strip()
 
 
+# Read-only endpoints may be retried on 40007 (rate limit, lifts within a minute). Writes are never
+# retried here: verify state first, then resubmit by hand.
+READ_ONLY = {"/open/v1/phone/list", "/open/v1/task/query", "/open/v1/pay/plan/info", "/open/v1/pay/wallet",
+             "/open/v1/app/installable/list", "/open/v1/app/list", "/open/v1/app/teamApp/list",
+             "/open/v1/group/list", "/open/v1/proxy/list"}
+
+
 def call(path, body, token=None):
     token = token or _token()
-    req = urllib.request.Request(BASE + path, data=json.dumps(body).encode(), method="POST", headers={
-        "Content-Type": "application/json", "traceId": uuid.uuid4().hex, "Authorization": f"Bearer {token}"})
-    try:
-        with urllib.request.urlopen(req, timeout=60) as r:
-            j = json.loads(r.read())
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(f"HTTP {e.code} {path}: {e.read(300).decode('utf-8', 'replace')}")
-    if j.get("code") != 0:
-        raise RuntimeError(f"GeeLark {path} code={j.get('code')} msg={j.get('msg')}")
-    return j.get("data")
+    for attempt in range(4 if path in READ_ONLY else 1):
+        req = urllib.request.Request(BASE + path, data=json.dumps(body).encode(), method="POST", headers={
+            "Content-Type": "application/json", "traceId": uuid.uuid4().hex, "Authorization": f"Bearer {token}"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                j = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"HTTP {e.code} {path}: {e.read(300).decode('utf-8', 'replace')}")
+        if j.get("code") == 40007 and path in READ_ONLY:
+            time.sleep(20 * (attempt + 1))
+            continue
+        if j.get("code") != 0:
+            raise RuntimeError(f"GeeLark {path} code={j.get('code')} msg={j.get('msg')}")
+        return j.get("data")
+    raise RuntimeError(f"GeeLark {path} still rate-limited (40007)")
 
 
 def md5(path):

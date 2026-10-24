@@ -1,20 +1,22 @@
-#!/workspace/.face-venv/bin/python
+#!/opt/jsw/.venv/bin/python
 """Identity + basic QA gate for model content.  Verification, not generation.
 Usage:
   identity_gate.py img   --model sienna a.png b.jpg ...      (stills)
-  identity_gate.py video --model sienna clip.mp4 [--frames 8]
+  identity_gate.py video --model sienna clip.mp4 [--frames N]   (default: every frame)
   options: --json out.json  --log rejects.jsonl  --verbose
-Exit code 0 only if every input passes.  Thresholds in THRESH (calibrated, see MODEL_CONTENT_PROCESS.md).
+Exit code 0 only if every input passes.  Thresholds in THRESH: Hard Rules s4 (10/21) = 0.78 centroid on
+every scored face frame, stills and video; frames with no face are skipped (e.g. whip pans).
 """
 import sys, os, json, argparse, subprocess, tempfile, time, glob
 import numpy as np, cv2
 from insightface.app import FaceAnalysis
 
-ROOT = '/workspace/hf-test'
+ROOT = os.environ.get('JSW_REF_ROOT', '/opt/jsw-data/hf-test')  # refs from grok-vm /workspace/hf-test
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-PACKS = os.path.join(ROOT, 'zen/posting/identity_packs.json')
-THRESH = dict(centroid=0.72, best_ref=0.74, video_centroid=0.55, video_best_ref=0.52, video_median=0.58, video_floor=0.50, min_det=0.55, edge_margin=0.02, headroom=0.03,
-              min_face_frac=0.06, seedream_centroid=0.78, second_face_ratio=0.25, video_pass_frac=0.80)
+PACKS = os.environ.get('JSW_PACKS', '/opt/jsw-data/identity_packs.json')
+PACK_ALIAS = {'camille': 'camille_v3'}  # camille pack RETIRED 2026-10-21, replaced by camille_v3
+THRESH = dict(centroid=0.78, best_ref=0.74, video_centroid=0.78, min_det=0.55, edge_margin=0.02, headroom=0.03,
+              min_face_frac=0.06, seedream_centroid=0.78, second_face_ratio=0.25)
 _app = None
 def app():
     global _app
@@ -46,7 +48,10 @@ def load_embs(paths):
     return np.array(out)
 
 def get_refs(model, exclude=()):
-    packs = json.load(open(PACKS)); E = load_embs([p for p in packs[model]['face_refs'] if p not in exclude])
+    packs = json.load(open(PACKS)); pack = packs[PACK_ALIAS.get(model, model)]
+    st = str(pack.get('status', ''))
+    if st.upper().startswith(('DRAFTED', 'RETIRED')): raise SystemExit(f'{model} pack is {st}: not gateable')
+    E = load_embs([p for p in pack['face_refs'] if p not in exclude])
     if len(E) == 0: raise SystemExit(f'no usable face refs for {model}')
     c = E.mean(0); c /= np.linalg.norm(c); return E, c
 
@@ -74,7 +79,7 @@ def check_image(im, refs, cent, T=THRESH, ocr=True, video=False, source=None, bo
     r['score_centroid'] = float(cent @ m.normed_embedding); r['score_best'] = float(sims.max())
     if source == 'seedream' and r['score_centroid'] < T['seedream_centroid']: r['reasons'].append('identity_centroid_low_seedream')  # per-source: Seedream copies one ref's face; see §0c
     if r['score_centroid'] < T['video_centroid' if video else 'centroid']: r['reasons'].append('identity_centroid_low')
-    if r['score_best'] < T['video_best_ref' if video else 'best_ref']: r['reasons'].append('identity_best_ref_low')
+    if not video and r['score_best'] < T['best_ref']: r['reasons'].append('identity_best_ref_low')
     if body:
         import body_check as bc
         b = bc.verdict(bc.measure(im))
@@ -86,8 +91,16 @@ def check_image(im, refs, cent, T=THRESH, ocr=True, video=False, source=None, bo
         if t: r['reasons'].append('text_in_image:' + '|'.join(t)[:60])
     r['pass_'] = not r['reasons']; return r
 
-def sample_frames(path, n):
-    d = tempfile.mkdtemp(); cap = cv2.VideoCapture(path); tot = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); out = []
+def sample_frames(path, n=0):
+    """n=0: every frame (Hard Rules: every scored face frame). n>0: n evenly spaced frames."""
+    cap = cv2.VideoCapture(path); tot = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); out = []
+    if n <= 0:
+        i = 0
+        while True:
+            ok, fr = cap.read()
+            if not ok: break
+            out.append((i, fr)); i += 1
+        return out
     for i in np.linspace(0, max(tot-1, 0), n).astype(int):
         cap.set(cv2.CAP_PROP_POS_FRAMES, int(i)); ok, fr = cap.read()
         if ok: out.append((int(i), fr))
@@ -95,7 +108,7 @@ def sample_frames(path, n):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('mode', choices=['img', 'video']); ap.add_argument('--model', required=True)
-    ap.add_argument('--frames', type=int, default=8); ap.add_argument('--json'); ap.add_argument('--log'); ap.add_argument('--no-ocr', action='store_true')
+    ap.add_argument('--frames', type=int, default=0); ap.add_argument('--json'); ap.add_argument('--log'); ap.add_argument('--no-ocr', action='store_true')
     ap.add_argument('--source', choices=['soul', 'seedream', 'other'], default='other'); ap.add_argument('--body', action='store_true', help='add silhouette/pose body check (still images)')
     ap.add_argument('--exclude', nargs='*', default=[]); ap.add_argument('files', nargs='+'); a = ap.parse_args()
     refs, cent = get_refs(a.model, a.exclude); res = {}; ok_all = True
@@ -105,11 +118,13 @@ def main():
             r = check_image(im, refs, cent, ocr=not a.no_ocr, source=a.source, body=a.body) if im is not None else dict(pass_=False, reasons=['unreadable'])
         else:
             fr = sample_frames(p, a.frames); rs = [check_image(f, refs, cent, ocr=False, video=True) for _, f in fr]
-            sc = [x['score_centroid'] for x in rs if x['score_centroid'] is not None]
-            frac = sum(x['pass_'] for x in rs)/max(len(rs), 1); reasons = sorted({q for x in rs for q in x['reasons']})
-            floor_bad = bool(sc) and (min(sc) < THRESH['video_floor'] or float(np.median(sc)) < THRESH['video_median'])
-            ok = frac >= THRESH['video_pass_frac'] and not floor_bad and len(rs) > 0
-            r = dict(pass_=ok, frames=len(rs), frame_pass_frac=frac, min_centroid=min(sc) if sc else None, reasons=([] if ok else reasons or ['video_frames_fail']))
+            scored = [x for x in rs if x['score_centroid'] is not None]; sc = [x['score_centroid'] for x in scored]
+            low = sum(s < THRESH['video_centroid'] for s in sc)
+            notes = sorted({q for x in scored for q in x['reasons'] if not q.startswith('identity_')})  # framing: info only, as in the 10/22 per-frame gate
+            ok = bool(sc) and low == 0
+            r = dict(pass_=ok, frames=len(rs), frames_scored=len(sc), frames_no_face=len(rs)-len(sc), frames_below_bar=low,
+                     median_centroid=float(np.median(sc)) if sc else None, min_centroid=min(sc) if sc else None,
+                     frame_notes=notes, reasons=([] if ok else ['identity_frame_below_0.78'] if sc else ['no_face_frames']))
         res[p] = r; ok_all &= r['pass_']
         print(('PASS ' if r['pass_'] else 'FAIL ') + os.path.basename(p), {k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items() if k != 'pass_'})
         if a.log and not r['pass_']:

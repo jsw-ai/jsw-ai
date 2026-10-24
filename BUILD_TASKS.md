@@ -57,6 +57,28 @@ your questions, and follow the "try 3 real fixes yourself, then escalate" rule.
   ledger dedupe, maxTryTimes 0 on TikTok. Live needs --live AND /etc/jsw/GO_LIVE (absent). Dry-run
   tested on the template phone id; gate tests all block as expected. phones.json mapping empty.
   Gaps: X RPA is video-only (no X image posts); X/FB/Reddit RPA have no AI-label field.
+- 2026-10-24 GeeLark plan (pay/plan/info): Pro, $198.40/mo, 20 profiles, 6 monthly-rental devices
+  (Sam said 10), parallels 0; wallet $0 + $19.84 gift. Created 6 phones (Sam authorized, ANSWERS3) with
+  chargeMode 1 (monthly; chargeMode 0 = pay-per-minute, never used): ids in jsw_post/phones.json,
+  group "JSW models", tag = model, proxy = model's AdsPower Decodo port, Android 12, app language
+  English (RPA needs English, failCode 20008). Wallet unchanged after. All 6 show hasBind=False and
+  availableMonthlyRentals still 6 -> binding to the monthly devices is NOT done; no bind API exists.
+  Phones NOT started (an unbound start could bill per-minute). 4 spares NOT created (no prepaid
+  capacity). All 6 report country USA incl. Camille/Gabriela/Valentina (region follows proxy IP).
+- 2026-10-24 GeeLark team apps added + auto-install ON for group "JSW models": TikTok 47.4.3,
+  Instagram 452.0.0.48.64, YouTube 21.42.243, Facebook 583.0.0.39.55, X 12.35.0, Reddit 2026.42.0.
+  They install when each phone first starts (app/install needs a running phone, error 42002).
+- 2026-10-24 Task 3 DONE: refs arrived (44/44, 126 MB, /opt/jsw-data/hf-test). identity_gate.py
+  rewired: refs/packs from /opt/jsw-data (env JSW_REF_ROOT / JSW_PACKS), venv /opt/jsw/.venv, 0.78
+  centroid for stills (all sources) and EVERY video frame (no-face frames skipped, framing = notes),
+  camille -> camille_v3, DRAFTED/RETIRED packs refused (valentina). best_ref 0.74 kept on stills.
+  Verified: all 5 packs load, every face ref has a face; LOO centroid: sienna .747-.835 (3 video-frame
+  refs < .78), charlotte .769-.921, madison .860-.911, gabriela .798-.941, camille_v3 .781-.857.
+- 2026-10-24 Higgsfield key replaced by Sam (Ultra account, key id 44cb871b...). Vault item stores the
+  combined "id:secret" in the username field, password empty -> use `Key <username>`. Auth 200, same
+  91-model catalog (no Seedream), empty custom-references. Test gen -> 403 not_enough_credits, 0 spent.
+  Higgsfield help center: API bills a separate prepaid USD balance (top up at open.higgsfield.ai,
+  min $5); plan credits apply only to web app / MCP / CLI.
 
 ## Credentials
 All in 1Password, vault "JSW" (Business): Higgsfield API key, GeeLark (API key + bearer), and every
