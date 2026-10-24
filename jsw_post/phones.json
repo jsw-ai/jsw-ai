@@ -1,0 +1,9 @@
+{
+ "_note": "Model -> GeeLark cloud phone id (envId). Fill once Sam confirms where the 10 phones are. Proxy per model = same Decodo port as AdsPower (/etc/jsw/proxies.json); never change a model's IP.",
+ "sienna":    {"envId": null},
+ "charlotte": {"envId": null},
+ "madison":   {"envId": null},
+ "gabriela":  {"envId": null},
+ "camille":   {"envId": null},
+ "valentina": {"envId": null}
+}
