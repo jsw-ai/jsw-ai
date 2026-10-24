@@ -1,19 +1,92 @@
 {
  "_note": "Model -> GeeLark cloud phone id (envId). Created 2026-10-24, monthly (chargeMode 1), group 'JSW models'. Proxy per model = same Decodo port as AdsPower (/etc/jsw/proxies.json); never change a model's IP.",
  "_platforms_note": "Per-model account availability. Only 'active' may be logged into or posted to. active = Sam/verified it exists and is usable; unconfirmed = vault has a login item but the account is not confirmed (vault items can be stale); none = no vault item; suspended = account banned/suspended, skip entirely. Confirm per model before promoting to active.",
- "sienna":    {"envId": "643140921407308131", "proxyPort": 10008,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "suspended", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "none"},
-               "platform_notes": {"youtube": "Suspended by YouTube; Sam 2026-10-24: no login, no posting. Vault item 'JSW - Sienna - YouTube' is stale."}},
- "charlotte": {"envId": "643140921407373667", "proxyPort": 10007,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "unconfirmed", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "unconfirmed"}},
- "madison":   {"envId": "643140921407439203", "proxyPort": 10001,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "unconfirmed", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "unconfirmed"}},
- "gabriela":  {"envId": "643140921407504739", "proxyPort": 10004,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "unconfirmed", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "unconfirmed"},
-               "platform_notes": {"instagram": "2 vault items", "youtube": "2 vault items incl. '(Google sign-in)'", "facebook": "3 vault items incl. a Facebook Page", "reddit": "2 vault items incl. '(Google sign-in)'"}},
- "camille":   {"envId": "643140921407570275", "proxyPort": 10005,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "unconfirmed", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "none"}},
- "valentina": {"envId": "643140921407635811", "proxyPort": 10006,
-               "platforms": {"tiktok": "unconfirmed", "instagram": "unconfirmed", "youtube": "unconfirmed", "facebook": "unconfirmed", "x": "unconfirmed", "reddit": "unconfirmed"},
-               "platform_notes": {"reddit": "2 vault items incl. '(Google sign-in)'"}}
+ "sienna": {
+  "envId": "643140921407308131",
+  "proxyPort": 10008,
+  "platforms": {
+   "tiktok": "active",
+   "instagram": "unconfirmed",
+   "youtube": "suspended",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "none"
+  },
+  "platform_notes": {
+   "youtube": "Suspended by YouTube; Sam 2026-10-24: no login, no posting. Vault item 'JSW - Sienna - YouTube' is stale.",
+   "tiktok": "Logged in 2026-10-24 via Sign in with Google: existing @thesienna_blake (verified on profile).",
+   "x": "Blocked 2026-10-24: 'Please use official X apps to proceed or try again later' on Google sign-in, 3 tries incl. Play update to 12.37.2. Escalated to Sam.",
+   "instagram": "No Google sign-in on Android; needs username/password - pending Sam's ruling (CLAUDE.md no-password rule).",
+   "facebook": "No Google sign-in on Android; needs username/password - pending Sam's ruling (CLAUDE.md no-password rule)."
+  }
+ },
+ "charlotte": {
+  "envId": "643140921407373667",
+  "proxyPort": 10007,
+  "platforms": {
+   "tiktok": "unconfirmed",
+   "instagram": "unconfirmed",
+   "youtube": "unconfirmed",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "unconfirmed"
+  }
+ },
+ "madison": {
+  "envId": "643140921407439203",
+  "proxyPort": 10001,
+  "platforms": {
+   "tiktok": "unconfirmed",
+   "instagram": "unconfirmed",
+   "youtube": "unconfirmed",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "unconfirmed"
+  }
+ },
+ "gabriela": {
+  "envId": "643140921407504739",
+  "proxyPort": 10004,
+  "platforms": {
+   "tiktok": "unconfirmed",
+   "instagram": "unconfirmed",
+   "youtube": "unconfirmed",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "unconfirmed"
+  },
+  "platform_notes": {
+   "instagram": "2 vault items",
+   "youtube": "2 vault items incl. '(Google sign-in)'",
+   "facebook": "3 vault items incl. a Facebook Page",
+   "reddit": "2 vault items incl. '(Google sign-in)'"
+  }
+ },
+ "camille": {
+  "envId": "643140921407570275",
+  "proxyPort": 10005,
+  "platforms": {
+   "tiktok": "unconfirmed",
+   "instagram": "unconfirmed",
+   "youtube": "unconfirmed",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "none"
+  }
+ },
+ "valentina": {
+  "envId": "643140921407635811",
+  "proxyPort": 10006,
+  "platforms": {
+   "tiktok": "unconfirmed",
+   "instagram": "unconfirmed",
+   "youtube": "unconfirmed",
+   "facebook": "unconfirmed",
+   "x": "unconfirmed",
+   "reddit": "unconfirmed"
+  },
+  "platform_notes": {
+   "reddit": "2 vault items incl. '(Google sign-in)'"
+  }
+ }
 }

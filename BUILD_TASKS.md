@@ -139,3 +139,22 @@ created by Sam - ASK SAM for it to wire secrets. Never print credential values.
   none / suspended); geelark.py post refuses anything not "active". Seeded from vault titles: all
   "unconfirmed" except sienna youtube = suspended, sienna + camille reddit = none (no vault item).
   Nothing is "active" yet - promote per model as Sam confirms / after verified logins.
+- 2026-10-24 Sienna phone: Sam started it from the GeeLark app -> auto-bound (hasBind true, monthly to
+  2026-11-23, availableMonthlyRentals 6->5, wallet unchanged). Binding needs NO manual step: starting
+  a phone from the app binds it. Google account on phone = vault "JSW - Sienna - Gmail" (dwl3...,
+  formerly mislabeled YouTube; case differs only). "Email (wc2026fans)" is a separate non-Google mailbox.
+- 2026-10-24 jsw_post/phone_ui.py: screen driver over GeeLark shell API (uiautomator dump, input tap,
+  screenshots) with stop guards for sign-up screens (no account creation) and CAPTCHA/password
+  screens (escalate). Never types passwords.
+- 2026-10-24 Sienna TikTok: Sign in with Google -> logged into EXISTING @thesienna_blake (her posts,
+  4 followers, 22 likes; bio has "AI-enhanced"). Onboarding (gender/interests) skipped. Play nags a
+  TikTok "additional files" update - dismissed. Vault TikTok username != handle (login name).
+- 2026-10-24 Sienna X: Google offers "Sign back in to X" but X returns "Please use official X apps to
+  proceed or try again later" (installed X is the Play build 12.35.0, installer com.android.vending).
+  Try 1 retry: same. Try 2: Play update - Play asked "Complete account setup / add payment option";
+  tapped Skip (no card added), update running.
+  Try 3 after update to 12.37.2 (declined a Play Pass offer): same block -> escalated to Sam. Likely X
+  integrity/emulator detection on the cloud phone, not credentials.
+- 2026-10-24 Sienna Instagram + Facebook: apps offer no Google sign-in ("I already have a profile" ->
+  username/password). Not attempted (CLAUDE.md no-password rule) - Sam to rule. YouTube skipped
+  (suspended); Reddit none. phones.json: sienna tiktok = active; others unchanged with notes.
