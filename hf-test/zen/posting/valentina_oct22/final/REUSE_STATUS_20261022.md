@@ -1,0 +1,6 @@
+# Valentina 10/22 reuse fill — status (0 credits, no generation calls; nothing posted or scheduled)
+Filled: X1 (s2_b), X3 (s5_a), FB (s6_a), IG story 1 (tt2_a). See REVIEWER_SUBMISSION_<slot>_reuse.md.
+NOT filled: Reddit 1, Reddit 2, X2, IG story 2. No unique still is left that is approved, gated at .78 or higher, has a moderate scoop or square neck (Reviewer 4:19 PM: no crew or high necks), and is not already used, retired or failed.
+- Excluded for a crew or high neck: test2 s4_a, s7_a, s8_a; oct22 F1, F2, H1, B3a, C2 (high square), VFBb; the v4 picks VX2g and VIGS2b (also failed).
+- Excluded for other reasons: VX2a (.783, deep cleavage); tt3_a and S2c1 (IGSTORY2 v3 and X2 v3 were failed); batch1/batch2 (two-ref 10/15, retired; batch2 also fails the gate); N4; P1/P2/N* (below .78); exciting_oct20 fin (.59-.77); rosario B/F (.82, but not approved: Reviewer failed that reel for waxy skin, hands and sarong); songvideos h_s5_a and h_s6_a (16:9 re-edits of s5_a and s6_a, so they would duplicate X3 and FB).
+- Reddit: r/StunningAIGirls is out because its rules require "freshly generated" images, and a reuse breaks that. r/AIGirlsSlay allows "edits, upscales" and would take both posts, but no still is left for them.

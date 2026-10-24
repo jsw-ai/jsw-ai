@@ -1,0 +1,12 @@
+# REVIEWER SUBMISSION YT Short dance v4 (Valentina, 2026-10-22). Not posted or scheduled.
+- File: final/valentina_ytshort_20261022_dance_v4.mp4  md5 ae02b57c26a6c67bffa22ad241a0f2d7. 5.03 s, H.264 Main, yuv420p, 1080x1920 full cover crop, faststart, 3.1 MB.
+- Source: new Kling 3.0 pro run, job 602829e0, 8.75 cr. Element 0950a489, sound off, low motion (shoulder bounce, knee bounce, finger snaps, hips square, no hip sway). Start image test2 s4_a_v4C (media f0f325cf, gate .89). The clip is vid/kYT.mp4: raw gate median .794, min .731.
+- Different from the TikTok dance: TikTok is the kB6 balcony grey tank; this is the living room, black crew tee and jeans. No kS1/kT1 material.
+- Gate on the export (vgate, step 4): median 0.790, min 0.718, 0 frames <0.70. PASS. Per-frame CSV: final/valentina_ytshort_20261022_dance_v4_gate.csv
+- Thumbnail: final/valentina_ytshort_20261022_dance_v4_thumb.jpg (frame 0, score .883)
+- Side-by-side vs s2_b at the same scale: qc/sbs_YTDANCE_v4_vs_s2b.jpg. Crew neck, no cleavage; body proportions follow s4_a/test2.
+- Sound: our own track, Miami Noche (from 70 s), no lip-sync.
+- On-screen text: "living room = dance floor" / "Miami Noche on repeat"
+- Title/caption: living room = dance floor 💃 Miami Noche on repeat #shorts #miami #latina #dance
+- Platform: YouTube Shorts · suggested slot: 8:30 PM ET today
+- Public, no AI mention, no Fanvue link.

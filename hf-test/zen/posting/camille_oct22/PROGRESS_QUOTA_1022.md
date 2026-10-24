@@ -1,0 +1,62 @@
+# Camille quota fill 10/22 – progress (started 6:05 PM ET)
+- Read: jsw-camille-content skill, VALENTINA_PIPELINE.md, SHARED_LEARNINGS.md tail, REVIEWER_SUBMISSIONS_1022.md, /workspace/review_cam1022 listing.
+- Higgsfield balance 4971.38 (ultra). Credits spent this run: 0 / cap 60.
+- free -g available: 5 GB at start.
+- STOPPED before generation: executor has no SendToAgent tool, so it cannot submit to the Reviewer, so no PASS and no Ayrshare scheduling are possible from this run. Resume: an agent with SendToAgent should run the full pipeline.
+- Targets still open: 4 X, 3 TikTok, 1 YT Short, 2 Reddit, 3 IG stories (all new, no reposts).
+- Parent steering 6:03 PM ET: at Ayrshare scheduling, turn on AI labels for every realistic video where Ayrshare supports them (TikTok AI-generated, YouTube altered/synthetic, Meta AI info) and note the ones it can't set. Each platform cut needs its own hook or opening shot, not the identical file.
+## Build resumed 6:10 PM ET (parent: build+gate+write submissions file, no posting)
+Workdir camille_oct22/quota/. Plan: 6 stills Q1-Q6 (15 cr) -> 3 IG stories, 2 Reddit, 1 X still; 4 Kling3 5s std sound-off clips (30 cr) -> TT1-3, YT1; X 2-4 = distinct recuts w/ own hooks.
+- Seedream jobs (2.5 each): Q1 1150c2ac (S6b ref) Q2 454e9a96 (S1a) Q3 3a29b27c (S2a) Q4 660165b5 (S5a) Q5 1c9acf99 (S6b) Q6 df7cf7f4 (S1a). Spent 15.
+- 6:09 PM: Q1-Q6 finished v4C, gate (qc/gate_stills.json): Q1 .818 Q2 .794 Q3 .800 Q4 .785 Q5 .853 Q6 .787 all PASS. By eye: Q2 has background shoppers -> redo Q2r 3d85dcb4 (2.5). Q6 record covers show printed faces (watch).
+- Uploaded starts Q1 f5e62786, Q3 f7dd88a5, Q4 552b5fa8, Q5 b12bfb22.
+- Kling3 std 5s sound off (7.5 each): K1 cba0614f (Q1 lane sway), K3 c8ec5f95 (Q3 promenade glance), K4 230cf3f2 (Q4 bakery lift), K5 4640bb93 (Q5 rooftop sway). Spent total 47.5.
+- 6:35 PM side task: live FB reel 1082307734799102 = camille_oct21/platform/camille_facebook_20261021_nice-market-to-sea_v1.mp4 (md5 ccd38f99, Ayrshare vicmFYYx); YT hYlWSGliAB4 = camille_oct21/final/camille_oct21_nice_market_to_sea_v8yt.mp4 (md5 dfacb7ac, Ayrshare M5xpQ2oI). Moved Drive ids 1CIQa3bH... and 1WKBE3Q7... from Camille/02 Ready SFW to Camille/05 Posted (1VNpHQvj...). Identical copies remain in Camille/01 Raw (1rxWUNkW..., 1zvFM6FQ...), not moved. Rule: move each file to 05 Posted once it posts.
+- K1 raw gate med .789 min .736 OK; K3 FAIL (head turn, med .664) -> use only 0-0.4s / 4.4-5.0s or drop; K4 med .791 min .755 OK.
+- K3r redo fff30595 (7.5). Total 55.0. K5 med .833 min .728 OK (note: K5 gate ran at 2 GB available, below 3 GB rule; waiting for >=3 GB from now).
+- 7:22 PM: exports done (7 videos in quota/final), platform stills in quota/platform. K3r raw med .787 min .733 OK. Final gates running sequentially via quota/work/run_all.sh (log quota/qc/run_all.log); box contended, ~20 min per gate.
+- 7:20 PM resume (credits now uncapped per Samuel standing approval). Final gates: TT1 .768/.732 FAIL, TT2 .784/.725 PASS, TT3 .819/.580 FAIL (dip 3.0-3.9s), YT1 .752/.707 FAIL. Finals score ~.02 below raw.
+- Replacement Kling3 PRO takes: P4 e391f4fe (bakery), P3 28f48930 (promenade), P5 a957101a (rooftop). Test export_light.py (no grain) to recover score.
+- P4 .790/.738, P3 .784/.749, P5 .837/.768 raw PASS. Rebuilding TT1/YT1/TT3/X3/X1 from P clips via export_light (no grain, crf16). X2 .785/.702 PASS, X3(K4) .766 FAIL, X1(K5) .671 min FAIL.
+- 8:10 PM: TT1 light-export (P4) .764/.731 FAIL -> encode drop is crop/upscale not grain. Testing crop vs blurred-pad in test/.
+- 8:22 PM test (P4, 0.5s): pad .794/.754, crop-only .789/.741, raw .791 -> drop comes from unsharp/text chain. New export_pad.py (blur-pad, no unsharp/grain). Rebuilding TT1 first.
+- 8:37 PM TT1 (P4, export_pad) .794/.747 PASS. Next: YT1, TT3, X3, X1 via export_pad.
+- 8:40 PM by-eye qc/sheet_P.jpg: P3/P4/P5 body+outfit consistent, alone, static (no walking), SFW OK.
+- 8:36 PM NEW RULE (parent): every cut >=7s (aim 8+), media attached; priority TT x3, IG Reel + 3 stories, YT Shorts x2, then rest. 5.3s cuts obsolete; run5 stopped. Generating 10s Kling PRO takes.
+- 8:35 PM still gate platform/ig_story1_Q1_lane.jpg: 
+- 8:35 PM still gate platform/ig_story2_Q4_bakery.jpg: 
+- 8:35 PM still gate platform/ig_story3_Q5_rooftop.jpg: 
+- 8:35 PM still gate platform/reddit1_Q2r_market.jpg: 
+- 8:35 PM still gate platform/reddit2_Q3_promenade.jpg: 
+- 8:35 PM still gate platform/x4_Q6_records.jpg: 
+- 8:45 PM submitted 10s PRO takes: L4 bakery b0dd41ad, L1 lane 7028e47d, L5 rooftop 1942dedf, L3 promenade b6839c35, L2 market 44d12640 (Q2r media 9194e466), L6 records 0c7210b4 (Q6 media 7f9644dd). All static, no walking.
+- 8:37 PM platform stills gated -> qc/gate_platform.json
+- 9:05 PM platform stills ALL PASS: story1 .828, story2 .802, story3 .853, reddit1 .780, reddit2 .785, x4 .793.
+- 9:07 PM L1-L6 downloaded (10s). Raw gating (0.2s step) via run8.sh -> qc/run8.log.
+- 9:12 PM by-eye qc/sheet_L.jpg: outfits/bodies consistent, all static; L5 head tilt mid-clip (check gate); L2 check for faint background figure.
+- 9:14 PM L2 REJECTED (background person at left, ~3.3s). Redo L2r f49411e2.
+- 8:52 PM raw gate L4.mp4 fps=24 dur=10.04 scored=51 min=0.699 med=0.783 lt78=24
+- 8:57 PM raw gate L1.mp4 fps=24 dur=10.04 scored=51 min=0.659 med=0.729 lt78=37
+- 9:01 PM raw gate L5.mp4 fps=24 dur=10.04 scored=51 min=0.682 med=0.811 lt78=16
+- 9:30 PM raw L4 .783/.699 (marginal), L1 .729/.659 FAIL. L2r by-eye: empty background OK. Plan: build >=7s cuts from passing windows of 10s clips and multi-scene montages of passing 5s clips (K1,P3,P4,P5,K3r) with export_pad.
+- 9:11 PM raw gate L2.mp4 fps=24 dur=10.04 scored=51 min=0.726 med=0.793 lt78=11
+- 9:50 PM specs v2 (>=7s): TT1=L4 0-6+8-10.04 (8.0s); TT2=K1+P5 0-3.5 (8.5s); TT3=L5 0-3.4+6.2-10.04 @0.9 (8.0s). Queued run10 (after raw gates).
+- 9:17 PM raw gate L3.mp4 fps=24 dur=10.04 scored=51 min=0.709 med=0.771 lt78=33
+- 9:24 PM raw gate L6.mp4 fps=24 dur=10.04 scored=51 min=0.62 med=0.749 lt78=40
+- 9:28 PM wrote REVIEWER_SUBMISSIONS_QUOTA_1022.md (6 stills). Builds paused per user.
+- 9:27 PM Reddit user u/Pristine_Culture_693 filled into submissions. Rendering TT1/TT2/TT3 v2 (export_pad) one at a time; L3/L6/L2r gates not needed for TT cuts, skipped.
+- 9:36 PM Reviewer: 5 stills PASS (stories x3, Reddit x2); x4_Q6 FAIL (faces on covers). Redo X still Q7a 04501bdc / Q7b ae7cede9 (S1a ref, faceless covers). TikToks: feet planted, no walking (all TT sources static).
+- 9:37 PM FINAL TT1_baguette gate: camille_oct22q_TT1_baguette_silent.mp4 fps=30 dur=8.33 scored=84 min=0.748 med=0.796 lt78=20
+- 9:58 PM FINAL TT1 v2 8.33s .796/.748 PASS. Q7a/Q7b REJECTED by eye (faces on covers again). Retrying X still without record crates: balcony, plain black vinyl + blank sleeve.
+- 9:47 PM FINAL TT2_album_lane gate: camille_oct22q_TT2_album_lane_silent.mp4 fps=30 dur=8.83 scored=89 min=0.747 med=0.801 lt78=12
+- 9:57 PM FINAL TT3_bluehour gate: camille_oct22q_TT3_bluehour_silent.mp4 fps=30 dur=8.33 scored=84 min=0.766 med=0.827 lt78=3
+- 10:25 PM FINAL TT2 v2 8.83s .801/.747 PASS; TT3 v2 8.33s .827/.766 PASS. Q8a/Q8b by-eye OK (blank sleeve, no faces, alone). Finishing+gating.
+- 10:36 PM Q8a .815 PASS (Q8b .776 not used). Added TT1-3 + x4b to submissions. Run complete.
+- 10:15 PM Reviewer: x4b PASS. TT1-3 FAIL (blur-pad bands; TT2 duplicate settings; TT3 rooftop + hair smear 4-6s). Fix: full-bleed fill crop (export_crop.py), new stills T2a/T2b/T3 + Kling.
+- 10:20 PM stills submitted T2a1/2 (cafe terrace), T2b1/2 (Menton stairs), T31/32 (Villefranche harbour). TT1v3 full-bleed crop render+gate running (run11).
+- 10:45 PM T stills by-eye: all alone, outfits OK; T2b1 has shop-sign text -> use T2b2. Finishing+gating T2a1,T2a2,T2b2,T31,T32 (run12).
+- 10:22 PM FINAL TT1v3_baguette gate: camille_oct22q_TT1v3_baguette_silent.mp4 fps=30 dur=8.33 scored=84 min=0.714 med=0.766 lt78=55
+- 10:25 PM T stills finished+gated -> qc/gate_T.json
+- 11:00 PM TT1v3 crop .766/.714 FAIL - top text at y250 sits over face in full-bleed. Moving texts below face. Stills: T2a1 .804, T2a2 .835, T2b2 .825, T31 .781 PASS; T32 .731 FAIL. Using T2a2, T2b2, T31 for Kling.
+- 11:08 PM Kling 10s pro submitted: C2a1/C2a2 (cafe, T2a2), C2b1/C2b2 (Menton stairs, T2b2), C31/C32 (harbour, T31). TT1v4 (texts at y1380-1600) render+gate running.
+- 10:42 PM FINAL TT1v4_baguette gate: camille_oct22q_TT1v4_baguette_silent.mp4 fps=30 dur=8.33 scored=84 min=0.742 med=0.790 lt78=21

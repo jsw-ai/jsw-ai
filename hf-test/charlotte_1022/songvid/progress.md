@@ -1,0 +1,48 @@
+# songvid progress (Proper Gorgeous) — master log
+- 18:35 EDT resume. Prior work in proper_gorgeous/progress.md. FINDING: existing final/*.mp4 (hook/x/yt) are Ken Burns still push-ins -> violate "no still push-ins standing in for motion". Must rebuild with Kling motion.
+- Excluding 1022_* stills/clips (today's daily posts). Usable Kling windows (raw per-frame): k_r2_r8 full (.822/.743), r2_r15 0-1.4, test_c3 0-2.1, r2_r13 0.6-1.6, r2_r4 0-0.9 & 4.1-5.
+- Plan: ~4 new Kling 3.0 std clips (10 cr each) from v4C stills >=.82 (r2_r8, r2_r15, test_c4, test_c5), then per-shot gate, rebuild 3 cuts.
+- 18:45 cost preflight Kling 5s std = 10 cr. Submitting 4 clips (b5.json: r2_r8a, r2_r8b, r2_r15, test_c4), hands-away prompt.
+- 18:50 SUBMITTED 4 Kling jobs (40 cr) -> work/jobs5.json. Next: download to work/clips5/, per-frame gate one at a time (>=3GB).
+- 18:58 wrote v2/build3.py (Kling clips, cover crop, hard cuts, title/end card only). Waiting on renders.
+- 19:00 wrote v2/pershot.py (per-shot gate, every 2nd frame @720x1280, CSV).
+- 19:12 4 Kling clips DONE + downloaded to work/clips5/. Gating raw next.
+- 18:53 killed obsolete Ken Burns QC queue (fqc/runq yt). Raw gate on clips5 running (qc/gate5).
+- 18:53 RAW GATE clips5: r2_r8a PASS .7926/.771; r2_r8b .758/.637 (use 0-1.9s); r2_r15 .760/.589 (use 0-1.1s); test_c4 see qc/gate5.
+- 18:53 wrote v2/cfg_{hook,x,ytshorts}.json (Kling windows from raw gate). Next: build hook.
+- built v2/final/charlotte_proper_gorgeous_hook_21s.mp4
+- 19:01 hook built v2/final. gating.
+- 19:15 HOOK v1 gate FAIL only shot11 (k_r2_r15 4-5s med .772). Dropped that window in all cfgs, slowed k_r2_r8 2.5-5 instead. Rebuilding hook.
+- 19:15 started v2/chain.sh (build+gate hook->x->yt sequential, log v2/chain.log)
+- 19:15 wrote v2/sbs.py (per-shot side-by-side vs face/body refs)
+- 19:18 RESUMED after interrupt; chain.sh still running (hook rebuild). Credits approved.
+- built v2/final/charlotte_proper_gorgeous_hook_21s.mp4
+- 19:28 hook v2 rebuilt (v2/final). hook gate waiting for mem/running.
+- 19:36 gated charlotte_proper_gorgeous_hook_21s: 316 rows; see qc/charlotte_proper_gorgeous_hook_21s_gate.json
+- 19:41 HOOK GATE PASS all 11 shots; overall med .7985 min .723 (qc/charlotte_proper_gorgeous_hook_21s_gate.json). X build+gate next (chain).
+- 19:42 hook side-by-side qc/charlotte_proper_gorgeous_hook_21s_sidebyside.jpg
+- 19:42 hook sbs reviewed: face/body match refs; text sits y1280-1395 over torso (per spec). Waiting X.
+- built v2/final/charlotte_proper_gorgeous_x_24s.mp4
+- 20:03 gated charlotte_proper_gorgeous_x_24s: 357 rows; see qc/charlotte_proper_gorgeous_x_24s_gate.json
+- 20:04 X GATE PASS all 11 shots; med .7993 min .7282. YT build+gate running (chain).
+- 20:05 X sbs done
+- 20:08 RESUMED (3rd). Hook already DONE+PASS; reporting hook. X done+PASS earlier; YT in chain.
+- 20:08 added gate + sbs paths to hook/x manifests. Hook reported to parent.
+- 20:09 YT finish task started; waiting CHAIN_DONE
+- 20:10 STEER: Reviewer failed hook+X: <15MB 2-pass ~5Mbps; speeds>=0.7; <=3 r2_r8 shots/cut; captions in manifests. Plan: new Kling clips from other stills, rebuild all 3 (v3).
+- 20:10 killed old YT chain (YT v2 used 0.5x + 5 r2_r8; obsolete under new rules).
+- 20:11 SUBMITTED 6 Kling (60 cr) -> work/jobs6.json (k6_test_c4m = test_c4 start with mismatched kitchen prompt by mistake).
+- 20:11 v3/ scripts: build3 now 2-pass 5 Mbps + captions in manifest.
+- 20:11 bitrate = min(5000, 13MB/dur) kbps (YT 30s ~3.3 Mbps to stay <15MB). Waiting on jobs6.
+- 20:19 jobs6 done, downloaded to work/clips6.
+- 20:33 gate6: only k6_test_c4m passes whole (.788/.734); windows k6_test_c3 0-2.8 (.798), k6_r2_r15 0-0.8 (.82), k6_test_c4 0-1.5 (.781). v3 cfgs written: <=3 r2_r8 shots, sp .85/.8, captions.
+- built v2/final/charlotte_proper_gorgeous_ytshorts_30s.mp4
+- 21:01 v3 ytshorts built+gated
+- 21:01 v4 started: per-frame raw clip scoring (v4/clipscore.log) to pick gated windows; v3 yt failed gate shots 3,9,10,13
+- 21:13 clipscore restarted at step 2 (box CPU contended)
+- built v2/final/charlotte_proper_gorgeous_hook_21s.mp4
+- 21:37 v3 hook built+gated
+- 21:38 SUBMITTED 8 Kling (60 cr, low-motion prompt) -> work/jobs7.json (b7.json). clipscore continuing.
+- 21:46 jobs7 done -> work/clips7
+- built v2/final/charlotte_proper_gorgeous_x_24s.mp4
+- 22:03 v3 x built+gated

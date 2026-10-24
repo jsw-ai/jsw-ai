@@ -1,0 +1,11 @@
+# Proper Gorgeous song-video progress (updated 16:50 EDT)
+- DONE: final/charlotte_proper_gorgeous_hook_21s.mp4 (+_manifest.json). 1080x1920 H.264 Main yuv420p faststart, 10.4 MB. Audio 118.5-139.5s.
+- QUEUED (runq.sh mem wait): x_24s, then ytshorts_30s via work/build2.py (stills-only Ken Burns, approved gated stills).
+- TODO: 1fps final gate per cut (one at a time, >=3GB), side-by-side ref vs frames, YT _thumb.jpg, captions.
+- Notes: all Kling clips failed 0.78 clip gate (k_r2_r15 best med .775) -> not used. Whisper line alignment failed -> no synced lyric lines; only title card (0.2-5.0s) and end card (dur-4.5..dur), non-overlapping, y<=1395 (MarginV 525).
+- Lingerie stills X_b/X_c excluded. Zero Higgsfield credits spent this session.
+- 16:47+: killed stale clip gate pg_gate (pid 2818216); clips unused.
+- 17:24 x_24s DONE; ytshorts queued; qc queue waits on build pid 3187703 (log /tmp/pg_qc.log)
+- 17:40 ytshorts encode running (pid 3187729, started 17:34); thumb done final/..._ytshorts_30s_thumb.jpg (text y1282-1391). QC queue (work/fqc.sh: hook -> x -> yt) starts after.
+- 17:47 ALL 3 ENCODES DONE. Gates running hook->x->yt via /tmp/pg_qc.log
+- 18:15 HOOK GATE PASS median .8236 min .8052 (21 frames, 0 <.78). side-by-side qc/charlotte_proper_gorgeous_hook_21s_sidebyside.jpg. captions final/captions.md. X gate running.

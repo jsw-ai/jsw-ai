@@ -1,0 +1,1 @@
+Deglossed Camille stills (nothing posted). 10 credits (4 x Seedream 5.0 Pro edit). Primary = camille_sN_deglossed.jpg (edit only, identity-safe). Alternate = camille_sN_extra_matte.jpg (edit + light highlight compression; s2 has none). before_after_sheet.jpg = before/after. vid/ = frames from the 3 Seedance raw clips. See SHARED_LEARNINGS.md 2026-10-15 "Camille deglossed".

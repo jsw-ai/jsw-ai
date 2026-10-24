@@ -1,0 +1,14 @@
+import json
+HEAD="Candid iphone photo of the woman from photo 1 (keep her exact face, long wavy golden-brown hair with honey highlights, warm brown eyes, even golden tan). Take the body exactly from photo 2: very full, large rounded bust as full as photo 2, clearly fuller than a slim model, narrow waist, flat toned stomach, wide curvy hips, long toned legs. "
+TAIL=" Warm backlit soft natural light, raw unretouched amateur phone photo, visible pores, fine lines, uneven skin tone, no beauty filter, no text, no logos, no other people anywhere, empty background. Face fully in frame with headroom."
+S={
+"s1":"Expression: relaxed and calm, lips softly closed or barely parted, NOT smiling, eyes looking straight into the camera, chin slightly lowered, head turned slightly to her right. She wears a fitted white scoop-neck tee and light jeans, standing in an empty bright apartment kitchen with plain wall. Head to waist, front-facing, eye level.",
+"s2":"Expression: playful closed-mouth smirk, head tilted to one side, eyes at camera. She wears a fitted black scoop-neck tank and black high-waist leggings, barefoot, standing in an empty bright apartment living room with hardwood floor and a plain wall, arms relaxed at her sides ready to dance. Wide shot from head to knees, front facing.",
+"s3":"Expression: soft thoughtful neutral, mouth closed, eyes looking away out of frame to the left toward a window, head in three-quarter profile. She wears a fitted cream scoop-neck sweater, at a large apartment window with the city skyline at dusk. Head to waist.",
+"s4":"Expression: eyes closed, laughing with head tipped back slightly, big natural laugh. She wears a fitted tan scoop-neck tank and a knit vest, on an empty park path lined with autumn trees. Head to waist, slightly low angle.",
+"s5":"Expression: raised eyebrow, small knowing smirk, looking back over her shoulder at the camera, body turned away at three-quarters but face turned to camera. She wears a fitted grey scoop-neck tee and a denim jacket, on an empty brownstone stoop in soft autumn light. Head to waist.",
+"s6":"Expression: wide-eyed amused surprise, mouth slightly open, eyes looking down at her phone held in one hand, head bowed slightly. She wears a fitted white scoop-neck tee and light jeans, holding an iced coffee, in a plain apartment doorway. Head to waist.",
+"s7":"Expression: relaxed, lips pursed around an iced coffee straw, eyes glancing up and sideways at something off-camera to the right. She wears a fitted navy scoop-neck tee (no logo), at an empty cafe window table. Head to waist, three-quarter angle.",
+"s8":"Expression: serene soft closed-eye small smile, face tilted up toward the sun, head angled up. She wears a fitted tan scoop-neck tank and denim shorts, on a sunny wooden porch with plain white railing. Head to waist.",
+}
+json.dump({k:HEAD+v+TAIL for k,v in S.items()},open('prompts.json','w'),indent=1)

@@ -1,0 +1,3 @@
+# export_pad.sh in out "hook" : light crop (scale to 1300 high-ish cover of 1080x1446 area) -> full frame 1080 wide centered over blurred fill, 1080x1920
+IN=$1; OUT=$2; printf '%s' "$3" > /tmp/hook_$$.txt
+ffmpeg -v error -y -i "$IN" -an -filter_complex "[0:v]split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=30:3,eq=brightness=-0.05[bg];[b]scale=1080:-2:flags=lanczos[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,drawtext=fontfile='/usr/share/fonts/truetype/sand-box/google/Poppins/Poppins-SemiBold.ttf':textfile=/tmp/hook_$$.txt:fontsize=50:fontcolor=white:borderw=5:bordercolor=black@0.85:x=(w-text_w)/2:y=h*0.17:enable='lt(t,3.5)'" -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -r 24 -movflags +faststart "$OUT"

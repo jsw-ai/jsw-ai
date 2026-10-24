@@ -1,0 +1,8 @@
+import json
+exec(open('mk.py').read().split("R=[")[0])
+HEAD2="Take the face and identity from photos 1 and 2 (the same woman: photo 1 relaxed front view, photo 2 relaxed turned head; same light green-hazel eyes, same very long dark brown wavy hair). Keep her face shape, nose, lips and eyes exactly, but change only the expression and head angle as described. Take the body from photo 3: same figure as photo 3, full natural rounded bust, narrow waist, flat toned stomach, curvy hips, slim athletic hourglass build, long toned legs. Her skin is a deep golden-bronze sun-kissed tan exactly like photo 3, warm and rich, NOT pale, NOT desaturated. "
+S[3]="Scene: empty pool deck with palm trees in Miami at golden hour, she wears a terracotta high-scoop two-piece swimsuit and stands with her torso angled 3/4 toward the camera (front of body visible, not from behind), head turned in three-quarter view LOOKING OFF-CAMERA far to the right at the horizon, lips parted slightly, distant gaze, no smile."
+S[8]="Scene: empty shoreline at golden hour with gentle waves behind her, she wears a white high-scoop tank top and light denim shorts, torso turned 3/4 to the camera, head turned sharply GLANCING OVER HER SHOULDER toward the camera, lips closed with a subtle calm look, hair swept to one side."
+M=["ef1fedf9-9026-4ff6-b9b2-f1ac7f9b6563","a074d318-ec64-40e0-8635-93da9fa1949d","9f32337a-4752-4177-a222-e12b4fe50e86"]
+R=[{"index":k,"params":{"model":"seedream_v5_pro","prompt":S[k]+" "+HEAD2+TAIL,"aspect_ratio":"3:4","count":1,"medias":[{"value":m,"role":"image_references"} for m in M]}} for k in [1,3,4,5,7,8,9,10]]
+json.dump(R,open('reqs2.json','w'));print(json.dumps(R))

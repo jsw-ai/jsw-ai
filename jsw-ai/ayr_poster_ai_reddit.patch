@@ -1,0 +1,8 @@
+161a162,168
+>     if platform == "tiktok":
+>         body["tikTokOptions"] = {"isAIGenerated": True}  # setting only, never in copy
+>     elif platform == "reddit":
+>         # caption convention: first line = title, remainder = body
+>         title, _, rest = text.partition("\n")
+>         body["post"] = rest.strip() or title
+>         body["redditOptions"] = {"title": title.strip()[:300], "subreddit": "u_TheSiennaBlake"}

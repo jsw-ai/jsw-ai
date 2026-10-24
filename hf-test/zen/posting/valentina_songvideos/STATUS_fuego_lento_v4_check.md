@@ -1,0 +1,7 @@
+# Fuego Lento – hook v4 feasibility (0 credits), 2026-10-22 ~6 PM ET
+RESULT: hook v4 NOT possible today. Not built. The X and YT cuts move to 10/23 or later. All v3 cuts are failed and retired (they use batch1 stills).
+rk2/rk3 = valentina_rosario_1021/work/k2.mp4, k3.mp4, from the Rosario boat-reel batch (same white one-piece and sarong, boat, start still rosario B). That reel failed the gate (reviewer_submission.md: NOT READY, median .687). Dropped.
+Eligible vertical clips: kB1 (grey tank balcony, .845), kB4 (grey tank balcony, .807, near-duplicate of kB1), kB2 (yellow sundress, .807), kS2pool (navy one-piece, .809), kA2 (green satin, .785, per-shot median .783–.786), tt2 (white dress, .782, 1.9 s window median .775, borderline). kB1 and kB2 were also in the 10/21 Snap Short v2.
+Eligible vertical stills: s2_b (.888, grey tank, same look as kB1/kB4), s5_a (.885, navy one-piece, same look as kS2pool), N4 (.785, pink scoop), C2 (.781, white square neck), VX2g (.806, yellow dress; VX2a/VX2h are the same pose).
+Excluded: batch1/batch2, tt3, s6_a/h_s6_a, kS1, kT1, kB6, rk2/rk3, crew or high necklines (kel, kS2kit, kS3kit, H1, F1, F2, s4_a, s7_a, s8_a, VFBb, B3a), VIGS2* (IGSTORY2), kD2 (.759), exciting_oct20 (fails).
+= 11 items but only ~7 distinct looks → 12+ distinct scenes not reachable. Horizontal: only h_s5_a passes (h_b3/h_b8r are batch1, h_s6_a booked); no horizontal motion clips exist.

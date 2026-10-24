@@ -1,0 +1,11 @@
+# REVIEWER SUBMISSION X2 v4 (Valentina, 2026-10-22). Not posted or scheduled.
+- File: final/valentina_x_20261022_v4_X2.jpg  md5 63d0de4e5002a51f3d3c6cff9cf29b3d (1080x1920 full cover crop, no letterbox or blur)
+- New Seedream 5.0 Pro edit, job b346759c (2.5 cr). ONLY reference: s2_b_v4C, media id d3329ec2-585c-4cb9-84a8-0f441f48a3de. Prompt uses the locked body line (test2) word for word, even front light, and no extra bust wording (work/pv4/102.txt).
+- Then finish_v4C -> v4r/fin/VX2g_v4C.jpg (gate .806) -> crop
+- Identity gate on the EXPORT: centroid 0.809 (best 0.795) PASS, body pass. JSON: work/gate_v4exp_X2.json
+- Side-by-side vs s2_b at the same scale (1200 px tall): qc/sbs_X2_v4_vs_s2b.jpg
+- By eye: fitted yellow sleeveless sundress on a seaside balcony above a beach. FLAG: the neckline is a high crew, not square. The square-neck versions either showed deep cleavage (VX2a) or failed the gate. The bust may read slightly flatter than s2_b under the high neckline; Reviewer to judge.
+- Unique: new image, not used anywhere. No kS1/kT1, N4 or pool.
+- Caption: Cartagena in my heart, Miami under my feet 💛 Corazón de Cartagena out now on Apple Music https://music.apple.com/us/album/coraz%C3%B3n-de-cartagena/6825712737
+- Platform: X · suggested slot: 5:30 PM ET today
+- Public, no AI mention, no Fanvue link.

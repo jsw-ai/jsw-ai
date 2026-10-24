@@ -1,0 +1,11 @@
+# REVIEWER SUBMISSION IG Story 2 v4 (Valentina, 2026-10-22). Not posted or scheduled.
+- File: final/valentina_igstory_20261022_v4_IGSTORY2.jpg  md5 6480e6c81c00394a6d855b5d82653f35 (1080x1920 full cover crop, no letterbox or blur)
+- New Seedream 5.0 Pro edit, job 56b5d34b (2.5 cr). ONLY reference: s2_b_v4C, media id d3329ec2-585c-4cb9-84a8-0f441f48a3de. Prompt uses the locked body line (test2) word for word, even front light, and no extra bust wording (work/pv4/65.txt).
+- Then finish_v4C (work/finish_v4C_v4r.py) -> v4r/fin/VIGS2b_v4C.jpg (gate .782) -> crop
+- Identity gate on the EXPORT: centroid 0.785 PASS (>=0.78), body pass. JSON: work/gate_v4exp2.json
+- Side-by-side vs s2_b at the same scale (1200 px tall): qc/sbs_IGSTORY2_v4_vs_s2b.jpg
+- By eye: fitted pale-pink ribbed tank, modest high scoop, no deep cleavage; bust in line with test2, not boosted; holds a cafecito cup in a bright kitchen.
+- Unique: new image, not used anywhere. No kS1/kT1, N4 or pool.
+- Caption: cafecito first, everything else after ☕
+- Platform: Instagram Story, IG AI label ON · suggested slot: 6:30 PM ET today
+- Public, no AI mention, no Fanvue link.

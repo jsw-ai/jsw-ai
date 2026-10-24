@@ -1,0 +1,2 @@
+cd /workspace/hf-test/charlotte_matchday_1021b/work; N=$1; rm -rf dn_$N; mkdir dn_$N; for t in $(seq 0.0 0.2 5.0); do ffmpeg -v error -y -ss $t -i raw_$N.mp4 -frames:v 1 dn_$N/$t.png 2>/dev/null; done
+cd /workspace/hf-test && /workspace/.face-venv/bin/python zen/posting/identity_gate.py img --model charlotte --source seedream charlotte_matchday_1021b/work/dn_$N/*.png 2>/dev/null | grep -E "^(PASS|FAIL)" | grep -o "[0-9.]*png\|centroid': [0-9.]*" | paste - - | sort -n | sed "s/.png\tcentroid'://" | paste -sd' '

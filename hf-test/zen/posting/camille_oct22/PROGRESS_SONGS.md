@@ -1,0 +1,57 @@
+# PROGRESS_SONGS (started Thu Oct 22 16:44:51 EDT 2026)
+- step0: no prior song files found
+- step1: song=01 Bonsoir Monaco, wav /workspace/music/distrokid/camille/01_bonsoir_monaco.wav; format ref = v3/r2/build_r2.py (title 0-~2.6s, lyrics lower third, end card last ~4s)
+- step2: all oct22 clips (raw/*.mp4, 13 Kling, 5s, 1080x1916) and fin stills are VERTICAL; per-0.1s face scores in qc/vg/*.txt. Searching for horizontal Camille clips.
+- step3: FOUND prior worker output at camille_songs/01_bonsoir_monaco/out (hook/x/youtube). Verifying instead of rebuilding.
+- step4: prior outputs: 12 scenes each, no repeats, title/tag/endcard present; GAPS: no lyrics burned in, export gates never run (qc/gate_camille_*.json missing), YT has 2 stills (M02_heels_h, M09_lights_h). Checking used-window clip scores.
+- step5: plan v2 rebuild (no overwrite): add lyrics, fix windows (X M09_v ss2.4, hook M05_v ss3.25), YT needs 2 more horizontal CLIPS -> Kling 3.0 h for M02_heels_h (retake; old K_M02_h failed med .728) and M09_lights_h (no clip yet). 7.5cr each sound off. Gating M09_lights_h still first.
+- step6: M09_lights_h still gate PASS .785 (qc/gate_M09h.json)
+- step7 17:04: Kling submitted (15cr): K_M09_h job 42f8ddd7-2228-4a7b-8639-f13772d62034 (start media a995d53a), K_M02b_h job 1554cb20-3965-4eae-a0b9-9437682a1d55 (start 8839fb91). Credits before: 5248.88
+- step8: both Kling done, downloaded raw/K_M09_h.mp4, raw/K_M02b_h.mp4. Next: gate each (vgate_multi or identity_gate video)
+- step9: gate K_M09_h med .818 min .769 PASS; K_M02b_h med .749 min .653 (whole clip FAIL), checking windows
+- step10: K_M02b_h FAIL -> submitted 8e665856-0c29-4afc-86f2-13fffa9bcc55 (M08b_h car arc, 7.5) and d19e4a64-d965-46bf-966b-683afbe26e25 (M02c_h heels static, 7.5). Credits so far 30. Rendering hook v2 (work/build_v2.py).
+- step11: hook v2 rendered out/camille_bonsoir_monaco_hook_21s_v2.mp4
+- step12: X v2 rendered
+- step13: gates K_M02c_h med .778 min .738 (no <.70), K_M08b_h med .839 min .80 (spare, same car setting as M08_h so not used)
+- step14: YT v2 rendered (12 horizontal Kling clips, M02c_h ss2.8, M09_h ss2.5)
+- step15a: export gate hook v2 done
+- step15b: export gate X v2 done
+- step15c: export gate YT v2 done
+- step16: specs OK, cropdetect = full frame on all 3 (no letterbox), text crops sharp (Montserrat via libass at output res)
+- step17: wrote REVIEWER_SUBMISSIONS_SONGS_1022.md. DONE.
+- step18 18:29: NEW RULE per-platform cuts. Added PL orders to build_v2.py; openers M03 tiktok, M06 igreel, M10 fb, M11 reddit, M02 ytshorts (hook v2 opens M01, X opens M12). 0 credits.
+- render tiktok done 18:36
+- gate tiktok: camille_bonsoir_monaco_tiktok_21s_v2 med 0.821 min 0.745 noface 0
+- render igreel done 18:51
+- gate igreel: camille_bonsoir_monaco_igreel_21s_v2 med 0.822 min 0.731 noface 0
+- render fb done 19:05
+- gate fb: camille_bonsoir_monaco_fb_21s_v2 med 0.821 min 0.745 noface 0
+- 19:19 resumed: tiktok/igreel/fb done+gated; run_plat.sh still running (reddit render in progress, then ytshorts)
+- render reddit done 19:22
+- gate reddit: camille_bonsoir_monaco_reddit_21s_v2 med 0.822 min 0.728 noface 0
+- render ytshorts done 19:38
+- 19:45 STEER: reviewer FAILED hook v2 + X v2 (M02_v walk). M02_v banned everywhere. Killed run_plat (ytshorts partial). All per-platform v2 contain M02_v -> superseded, rebuild as v3. Generating vertical standing heels Kling clip M02s_v from M02_heels_v still (dbb06455).
+- Kling jobs M02s_v: 0c2f8de8-9c11-4aee-b4f1-d1ab2bbabc2b, M02t_v: be871f64-f65e-4054-bfd2-b52301303eed (15 cr, unlimited approved)
+- M02s_v gate med .828/min .776 PASS; M02t_v med .838/min .796 PASS -> using M02t_v (standing, slow arc) as M02_v replacement; windows in work/ss_v3.json; build script work/build_v3.py (X at 4300k)
+- 20:14 v3 hook_21s_v3 md5 9f587aa652b1becd4905236d5e51bdf1 camille_bonsoir_monaco_hook_21s_v3 med 0.823 min 0.743 noface 0
+- 20:28 v3 x_24s_v3 md5 702f1e65171758b206229e685f9c636d camille_bonsoir_monaco_x_24s_v3 med 0.822 min 0.743 noface 0
+- 20:42 v3 tiktok_21s_v3 md5 142f1db5444212ac519e5a978225e9f3 camille_bonsoir_monaco_tiktok_21s_v3 med 0.828 min 0.743 noface 0
+- 20:56 v3 igreel_21s_v3 md5 56953e06d61beb141d3f7e3d3d8c4e95 camille_bonsoir_monaco_igreel_21s_v3 med 0.825 min 0.744 noface 0
+- 21:14 v3 fb_21s_v3 md5 d351c0445826c5c6c9d6ba1c218df382 camille_bonsoir_monaco_fb_21s_v3 med 0.827 min 0.744 noface 0
+- 21:25 Verified hook_21s_v3 + x_24s_v3 complete & PASS (no re-render). X: H.264 Main yuv420p faststart, video 4.32 Mbps, 13.48 MB. Stopped per instruction; platform cuts tiktok/igreel/fb v3 done+pass, reddit/ytshorts still in background run_v3.sh.
+- 21:32 v3 reddit_21s_v3 md5 bd67e9db6562d25a7862862039c7ded4 camille_bonsoir_monaco_reddit_21s_v3 med 0.828 min 0.724 noface 0
+- 21:33 REVIEW: all 5 v3 FAILED (M02t_v feet step). Killed run_v3.sh. Plan v4: per-platform distinct clip sets.
+- 21:33 K_M02s_v: feet out of frame (cropped at shins), cobbles shift -> cannot verify static; DROPPED with M02t_v.
+- 21:34 Step5: originals intact at /workspace/hf-test/zen/posting/camille_oct16/REFERENCE_CONTACT_SHEET_v4.jpg and /workspace/hf-test/zen/posting/camille_oct20/LOCKED_BODY.txt; copied (md5-identical) to /workspace/camille_oct16/ and /workspace/camille_oct20/.
+- 21:38 Submitted 36 Kling v4 takes (12 scenes x a=arc,b=hair-tuck locked,c=push-in; feet planted) = 270 cr; job ids in work/v4_jobs.txt, names work/v4_names.json
+- 21:47 36/36 Kling v4 done, downloaded raw/K4_*.mp4; foot-check sheets (every 0.5s) + gate running (work/gate_v4raw.log)
+- 21:51 Feet check v4 round1: a (arc) + b (hair tuck) all static, feet planted. c (push-in) EXCLUDED where scale grows strongly (reads like approach): M01c,M02c,M03c,M05c,M06c,M08c,M09c; kept M04c,M07c,M10c,M11c,M12c. Submitted round2 24 takes (d=arc R->L + head turn, e=tilt-up + strap) = 180 cr.
+- 22:04 Feet check round2: EXCLUDED M01d,M02d,M07d (subject shifts/steps), M01e,M02e,M06e,M07e (tilt ends in big close-up / reads as approach). Raw gate so far: M01a .836/.779 P, M01b .818/.696 FAIL, M01c .827/.778, M02a .837/.785 P, M02b .784/.661 FAIL, M02c .837/.772 (excluded motion). Gating rest every 6th frame (work/vgate_fast.py) for selection; final cuts gated every 3rd.
+- 22:23 RESUME. run_v3 stopped (pid 3633418 gone). Ref sheet + LOCKED_BODY present at /workspace/camille_oct16|oct20. New rules: full-bleed fill crop (no pad), 5 platforms (tiktok,igreel,fb,x,reddit), exclude M11 rooftop black-dress. Raw gate 24/49 done.
+- 22:23 Restarted raw gate on 18 remaining eligible takes (M11 + motion-excluded skipped), log work/gate3.log. build_v4 confirmed fill-crop of native 9:16 Kling source (no pad). Plan script work/plan_v4.py: 5 platforms, M11 excluded.
+- 22:37 Raw gate done (48 takes). Usable pool 32 takes (passing + feet-static, M11 excluded). Plan work/v4_plan.json: 5 platforms x 12 takes, each take used <=2x, distinct openers (TT M04, IG M09, FB M06, X M12, Reddit M10); max pairwise shared takes 6, same take+window <=2.
+- 22:44 v4 tiktok_21s_v4 md5 890175e0b740c4896fb40b83dd85d630 size 13374397 camille_bonsoir_monaco_tiktok_21s_v4 med 0.834 min 0.764 noface 0
+- 22:47 v4 igreel_21s_v4 md5 fb31c7b9ad245ec7b4098301bf80c1b9 size 13212708 camille_bonsoir_monaco_igreel_21s_v4 med 0.839 min 0.727 noface 0
+- 22:49 v4 fb_21s_v4 md5 ca2460e8bf2f141dd5c4c78fc28f39d4 size 13305826 camille_bonsoir_monaco_fb_21s_v4 med 0.833 min 0.744 noface 0
+- 22:50 v4 x_24s_v4 md5 b82a0ae72182ddeaca7fbef0a5867411 size 13206310 camille_bonsoir_monaco_x_24s_v4 med 0.817 min 0.707 noface 0
+- 22:52 v4 reddit_21s_v4 md5 3c2f5b88946d9debc8c576d081bb7042 size 13299754 camille_bonsoir_monaco_reddit_21s_v4 med 0.821 min 0.737 noface 0

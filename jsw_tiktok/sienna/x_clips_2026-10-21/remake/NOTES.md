@@ -1,0 +1,6 @@
+# Sienna X remakes 2026-10-21 (REVIEW ONLY, not posted/scheduled)
+Finals: sienna_x1_tease_drop_phone_v3.mp4 (md5 e1fcf2c0f441ed5b4c8b86efe20c8440), sienna_x2_tease_balcony_guitar_v2.mp4 (e7070397823e2dca3b2ceb1bacdb73d8), sienna_x4_CLEAN_hoodie_to_surf_v2.mp4 (4710d09ed48bdcd959655b966f968f71). Montages and thumbs sit next to them.
+Jobs are in jobs.txt and prompts in p_*.txt / k_*.txt / s_x2.txt. The locked body line is pasted word for word in all of them.
+Start stills: x1 = 2026-10-21 sA2_b_v4C (gate 0.793); x2 = bal_p_v4C (Seedream edit of gc2 b1a: pen removed, hands resting; b1a face pasted back; 0.812, thigh-proxy flag only on a seated pose); x4 hoodie = hood2_q_v4C (edit of sA2_b plus a face paste; 0.782, thigh-proxy flag on a kneeling pose); x4 surf = surf3_ap_v4C (0.802).
+Video: x1 Kling3 pro 6 s x1_a (x1_b rejected: eyes closed 3.25-4.25 s). x2 Seedance 2.0 8 s 720p, audio ref = vocals_full 40.0-48.0 compressed and loudnormed; mouth led the audio by 0.25 s, so the final audio is the mix from 40.25 s; mouth/vocal-energy corr 0.54 at zero lag. x4 Kling3 pro 5 s x4a_a (frames 0-95, palm covers lens) HARD CUT to x4b_a (full); x4a_b and x4b_b unused.
+Credits (preflight prices): Seedream 12 x 2.5 = 30; Kling 6 s x2 = 21; Kling 5 s x4 = 35; Seedance 8 s x1 = 36. Total 122.

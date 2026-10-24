@@ -1,0 +1,63 @@
+# Gabriela 10/22 rebuild progress (ET)
+- 16:47 mk2.py SAR fix (setsar=1 after crop); T1/T2/T3/Y1/REEL rebuilt.
+- 17:00 T1 gate PASS .857/.764; T2 PASS .824/.780.
+- 17:14 T3 rebuilt (fancover trimmed 0-1.0s, old frame 1.167 = .482) gate PASS .827/.746.
+- 17:09 Y1 PASS .808/.754; REEL PASS .834/.735. Y1 thumb = 1.0s title frame.
+- clink v7 FAILED (.829/.662); new Kling a9819f17 (start media 36611065) -> clink v8, gate running.
+- rd stills v2 FAILED (.751/.763); new Seedream a399d577 rdfoot3, d9000347 rdarp3 -> q5 finish+gate.
+- 17:24 clink v8 PASS .856/.712; rdfoot3 PASS .810 (body unmeasurable -> by-eye); rdarp3 FAIL .776 (dropped).
+- 17:27 sbs done T3/clink v8/rdfoot3; rdfoot3 -> final/gabriela_reddit_20261023_foot_b_v3.jpg
+- 17:29 manifests in v3man/; md5 check clean (no reuse of any prior file)
+- 17:31 packet written: REVIEWER_PACKET_quota_catchup_v3.md
+- 17:33 packet finalized
+
+## v4 round (started 18:13 ET)
+- PASSED: T3, Y1, clink v8, S3, padaria_f (X), foot_b (Reddit profile). FAILED: T1, REEL, T2, S1, S2.
+- Plan: 6 Seedream (t1a, reel_sp, t2sp, t2mia, s1, s2) -> finish -> gate; 4 Kling; rebuild T1/T2/REEL.
+- 18:15 6 Seedream submitted (ids in v2/jobs_v2.txt)
+- 18:20 stills downloaded raw/v4*.png; q6 finish+gate running
+- 18:23 gate: v4reel PASS .803, v4t2sp PASS .820 (body unmeasurable, by eye), v4t2mia PASS .805, v4s2 PASS .810; v4t1a FAIL .772, v4s1 FAIL body(thigh, seated) .784 -> regenerating both
+- 18:27 Kling submitted for reel/t2sp/t2mia; retakes for t1 and s1 submitted
+- 18:31 retakes PASS: v4t1b .831, v4s1b .784 (v2/gate_stills_v4b.json)
+- 18:33 Kling kv4_t1 submitted
+- 18:36 S1/S2 v4 stories made (final/stories_v4), sbs done
+- 18:40 steering: captions already sent (skip). New rule: one file per platform, each with its own hook/first shot. Friday cuts after v4 if time; no 2-6 AM ET slots.
+- 18:41 4 Kling clips downloaded (v2/k/kv4_*), gating in q7
+- 19:00 clip gates: kv4_t1 PASS .833/.747, kv4_t2sp PASS .806/.716, kv4_t2mia PASS .809/.766, kv4_reel FAIL .760/.467
+- 19:02 kv4_reel retake b9b6a85b submitted; T1/T2 v4 build+gate running (q8)
+- 19:08 kv4_reel2 downloaded; q9 queued (gate clip, build REEL v4, gate)
+- 19:20 resumed; T1/T2 v4 built, gating; q9 REEL pending. Credits approved. Starting Friday stills batch.
+- 19:22 12 Friday stills submitted (ids in jobs_v2.txt)
+- 19:26 Friday stills downloaded raw/f*.png; q10 (finish+gate) queued after q9
+- 19:34 T1 v4 PASS .841/.759; T2 v4 PASS .813/.741
+- 19:35 T1/T2 v4 sbs done
+- 19:46 finish_v4C done on all 12 Friday stills (removed from q10)
+- 19:52 5 Friday Kling submitted (pre-gate; stills gate in q10)
+- 19:49 kv4_reel2 PASS .819/.772; REEL v4 built, gating
+- 19:57 REEL v4 PASS .821/.737
+- 19:59 REEL sbs done; Friday clips downloaded; q11 gates them after q10
+- 20:02 REVIEWER_PACKET_quota_catchup_v4.md written (fixes only)
+- 20:03 Friday still gates: PASS fx1 .825, fx3 .793, fs2 .830, fs3 .803, ft1 .824, ft2 .801, fyt1 .791, fyt2 .802; FAIL fx2, fs1(body), frd2 .779, ft3 .766
+- 20:04 q11 was killed externally (Terminated); restarted as q12 (kf_t1,t2,yt1,yt2; kf_t3 dropped since ft3 failed)
+- 20:07 Friday finals: X coconut, X balcony, story s2 sunset, story s3 wynwood (+sbs)
+- 20:12 retakes downloaded+finished; q13 gate queued after q12
+- 20:15 kf_t3b Kling submitted
+- 20:10 resumed (v4 packet already done)
+- 20:12 time-saving: stopped per-clip gates (kf_t1 clip FAIL; only 2.1-5.0s used); q14 = retake stills gate, build FT1/FT2/FY1/FY2, gate finals (per-frame final gate covers whole clip)
+- 20:20 kf_t3b downloaded; q15 queued (build+gate FT3 after q14)
+- 20:27 ft3b still FAIL body -> FT3 dropped (q15 killed). FT1 PASS .822/.783, FT2 PASS .815/.807; FY1/FY2 gating
+- 20:36 STEER: all videos >=7s. FY1 final FAIL .774. Plan: re-render Kling at 8-10s from same gated stills (T1,T2sp,REEL2,ft1,fyt1,fyt2), FT2=kf_t2+kf_t1seg; clink rebuild w/ stationary beat
+- 20:45 7 Kling 8s jobs submitted (see jobs_v2). FT2 rebuilt v2 = kf_t2 + kf_t1[2.1-5.04] (both segments gated PASS) 7.94s
+- 20:40 8s clips downloaded; q16 per-shot gates (clink first)
+- 20:40 FT2 v2 dropped (reused ft1 footage w/ FT1); new 8s 872433fc k8_ft2 from ft2 still. v5 build script v2/build_v5.py ready
+- 20:49 k8_clink median .852 but dip .629 @2.17-2.75 (clink occlusion); clink v9 = v8 (5.03s, PASS) + k8_clink 3.0-5.5 stationary beat => 7.53s
+- 21:11 memory-starved (2G avail); q18 queued to auto-build v5/Fri finals and gate. Wrote REVIEWER_PACKET_7s_addendum.md
+- 21:15 clink v9 PASSED by Reviewer; watching q16/q18
+- 21:28 Friday still manifests v3man/{fx1,fx3,fs2,fs3}_fri_manifest.json written
+- 21:29 REVIEWER_PACKET_7s_v2.md started (Friday stills section)
+- 21:40 k8_reel PASS .803/.757. Speed-up: stopped separate per-shot clip gates; per-shot table now computed from final-gate per-frame scores by shot time range (same frames). q18 restarted
+- 22:05 resumed (clink v9 booked Sat; untouched)
+- 22:08 fan-reveal replacement: Kling 8s 85a95950 submitted (hoodie 1s + Wynwood 8s plan)
+- 22:17 REEL v5 PASS .804/.733. k8_wyn downloaded; q19 queued (fan-reveal v4 = fancover 0-1 + k8_wyn 0-7 = 8s)
+- 22:31 T1 v5 PASS .803/.744. T2 v5 FAIL (k8_t2sp looks away 4.7-7.0s, .38). T2 v6 = kv4_t2mia 0-4.0 + kv4_t2sp 0-3.4 (7.4s) queued q20
+- 22:31 sbs T1 v5, REEL v5

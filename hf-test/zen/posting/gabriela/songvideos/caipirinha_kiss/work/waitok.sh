@@ -1,0 +1,1 @@
+for i in $(seq 1 400); do a=$(free -g|awk '/Mem/{print $7}'); g=$(pgrep -af "python.*(fgate|vgate2|identity_gate|pf_gate)"|grep -ci gabriela); [ "$a" -ge 3 ] && [ "$g" -eq 0 ] && exit 0; echo "$(date +%T) avail=$a g=$g"; sleep 60; done; exit 1

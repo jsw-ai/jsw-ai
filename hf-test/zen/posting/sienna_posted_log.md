@@ -1,0 +1,2 @@
+# Sienna posted log
+- 2026-10-17 ~23:10 ET: still `/workspace/hf-test/sienna_oct17/final.jpg` (Soul2 + face Soul ba97f512, v4C finish; gate 0.781/0.798). IG feed https://www.instagram.com/p/DenrmUlHH4t/ ; X https://twitter.com/BlakeSienn39605/status/2111655592116854961 . Reddit failed (SUBREDDIT_NOEXIST for TheSiennaBlake / u_TheSiennaBlake / u/..). TikTok skipped (video only so far). YouTube skipped. Cost ~0.5 credits (4 Soul stills).

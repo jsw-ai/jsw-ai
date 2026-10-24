@@ -1,0 +1,32 @@
+# JSW top 10 posts by views, all six models
+
+Sources: the Notion Post Performance database, queried 10/21 at about 4:55 PM EDT. Short lengths and the older view counts come from `yt.jsonl`. TikTok repost views come from `tiktok_views_log.jsonl` (checked 10/21 at 4:17 PM EDT). I also checked `ig_latest.json` and `x_latest.json`. Times are EDT. A blank cell means the number or detail isn't recorded anywhere. I did not run refresh.py or AdsPower, and I posted nothing.
+
+| # | Model | Platform | URL | Posted (EDT) | Views | Likes | Comments | Shares | Caption / hook (first line) | Format | Length | Setting / outfit / transition |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Madison | YouTube | https://www.youtube.com/shorts/tMMnIOlsEPo | 10/18 10:03 AM | 1,216 | 14 | 1 | | okay but the iced coffee is doing most of the convincing ☕ (title: "New York is growing on me") | YouTube Short | 8s | Setting from the caption: NYC, iced coffee |
+| 2 | Charlotte | YouTube | https://www.youtube.com/shorts/arugaSu48qg | 10/20 12:52 AM | 1,177 | 25 | (hidden) | | Lounge mode to matchday mode in one swipe. Bayern v Arsenal, Wednesday 8pm UK. What's your predictio[n] | YouTube Short | 9s | Clip charlotte_03_bayern_fitcheck. Outfit change from lounge to matchday. Transition: swipe |
+| 3 | Valentina | YouTube | https://www.youtube.com/shorts/wO2xnNkcg88 | 10/18 4:31 PM | 645 | 19 | (hidden) | | legs: gone. vibes: unbothered #shorts #dance | YouTube Short | 8s | Dance (from the hashtag) |
+| 4 | Valentina | YouTube | https://www.youtube.com/shorts/lu9IX4h1bBw | 10/17 11:29 PM | 518 | 16 | 1 | | tell him he's buying the next one ☕😉 | YouTube Short | 8s | Coffee date (from the caption) |
+| 5 | Valentina | YouTube | https://www.youtube.com/shorts/hYaKOEa5I00 | 10/20 12:53 AM | 465 | 17 | 1 | | non-negotiable. learn one salsa step, papi 💃🚩 | YouTube Short | 8s | |
+| 6 | Valentina | YouTube | https://www.youtube.com/shorts/qbvRryztVxc | 10/20 6:01 PM | 414 | 15 | 1 | | hora colombiana is a lifestyle, not a delay ⏰🤫 | YouTube Short | | |
+| 7 | Valentina | YouTube | https://www.youtube.com/shorts/IEf_McPu2Cw | 10/16 10:48 AM | 378 | 13 | (hidden) | | I called it. you know I called it. #gymgirlconfessions | YouTube Short | 6s | Pool day (from the hashtag #poolday) |
+| 8 | Madison | YouTube | https://www.youtube.com/shorts/OQXBjGKegfE | 10/16 2:45 AM | 374 | 4 | (hidden) | | the 7am class crowd knows me by my laugh by now. coffee after is non-negotiable. | YouTube Short | 13s | Pilates class, then coffee (title: "NYC Pilates Girl: Post-Class Day Reset") |
+| 9 | Valentina | YouTube | https://www.youtube.com/shorts/rVTOB6iTMNw | 10/20 12:01 PM | 338 | 7 | | | she loves me, she just has notes 🇨🇴🍽️ | YouTube Short | | |
+| 10 | Sienna | TikTok | https://www.tiktok.com/@thesienna_blake/video/7698845294208748814 | 10/20 4:11 PM | 288 | 9 | 0 | 0 | Wrote the whole chorus before he even noticed his towel was missing 🌊✍️ Low Tide Lover drops tomorrow | TikTok video | | |
+
+Just outside the top 10 (from Notion): Charlotte TikTok "Bubbles at 35,000 ft…" 276 views, 0 likes. Charlotte TikTok "Retired from the pitch, not from leg day" 240 views. Madison YouTube "iced coffee, golden hour, zero plans" 224 views, 11 likes, 1 comment, 12s. Sienna X "Atlanta WC2026 travel deals" 208 views, 1 like, 2 replies, 1 share.
+
+## Repost effect
+- **Charlotte, Bayern fit-check on TikTok:** the 10/20 original (7698608394445344033, 12:52 AM EDT) still has **0 views**. The repost on 10/21 at 1:31 PM EDT ([7699175217326869793](https://www.tiktok.com/@charlottehayes240/video/7699175217326869793)) had **133 views, 2 likes, 0 comments, 0 shares** within about 3 hours. Its hook is "Lounge mode to matchday mode in one hand swipe 🔴⚪ Munich, you were something else." The transition is a hand swipe over the lens. It cost 0 credits because it reused the clip (REV-56). The same clip on YouTube is #2 overall with 1,177 views.
+- **The same clip on other platforms:** Valentina's "legs: gone" got 645 views on YouTube, 118 on Facebook Reels and 95 on TikTok. "tell him he's buying the next one" got 518 on YouTube, 96 on Facebook and 77 on TikTok. Madison's "7am class crowd" got 374 on YouTube and 112 on TikTok. "iced coffee, golden hour" got 224 on YouTube and 59 on TikTok.
+- **Other 0-view TikToks** that could be reposted: Valentina 7699106192311848244, 7698873391704526098 and 7698608615862603016, and Charlotte 7699020305334832417 (all from the TikTok views log).
+- **Growth between checks:** YouTube views kept rising after the older `yt.jsonl` snapshot. Charlotte went from 663 to 1,177 and Valentina's "legs: gone" from 619 to 645. Valentina's "she has notes" went from 3 views at 12:20 PM to 247 at 4:20 PM, and is now 338.
+
+## Patterns
+- **Platform:** YouTube Shorts take 9 of the 10 spots, and every post above 300 views is a Short. TikTok's best is 288 (Sienna). X's best in Notion is 208 impressions, from a June post, and the October X posts got 0 to 156 impressions. Instagram Reels play counts in `ig_latest.json` peak at 46 (Valentina Depi7rEjJwB). Charlotte's Instagram account is suspended.
+- **Length:** every top Short with a recorded length runs 6 to 13 seconds, and 5 of the 7 are 8 to 9 seconds. The 13s Madison Short had the weakest like count in the top 10 (4).
+- **Hook type:** the top hooks are short, first-person and relatable one-liners, often with a punchline ("legs: gone. vibes: unbothered", "I called it", "she just has notes", "hora colombiana is a lifestyle"). A "this to that in one swipe" transition hook did best in absolute terms: Charlotte got 1,177 views on YouTube and 133 on the TikTok repost. Lifestyle hooks with coffee or NYC also did well for Madison (#1 and #8). Valentina, posting with a playful Latina and Miami voice, holds 6 of the 10 spots.
+- **Engagement:** on YouTube, likes run at about 1–4% of views. Comments are 0 or 1 everywhere, and shares are 0 on almost every post where they're tracked.
+- **Missing data:** most rows have no setting or outfit recorded. Camille and Gabriela have no tracked posts with views.
+- **Instagram numbers left out:** I excluded some very large like counts in `ig_latest.json`, such as 756,365 likes on Valentina's Det1x12tzXl and 78,539 on Madison's DdCYlleiW5S. They are feed, ad and longform items that sit alongside reels with 0 to 11 likes. They are not in Notion, have no view counts, and look like scraper noise rather than our own posts. Someone should check them by hand before using them.
