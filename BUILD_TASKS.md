@@ -158,3 +158,12 @@ created by Sam - ASK SAM for it to wire secrets. Never print credential values.
 - 2026-10-24 Sienna Instagram + Facebook: apps offer no Google sign-in ("I already have a profile" ->
   username/password). Not attempted (CLAUDE.md no-password rule) - Sam to rule. YouTube skipped
   (suspended); Reddit none. phones.json: sienna tiktok = active; others unchanged with notes.
+- 2026-10-24 Sam (ANSWERS7): never type passwords; Sam does Gmail/IG/FB/any password login by hand per
+  phone. X posts via Ayrshare (Sam's X dev app), not a phone login - stop fighting the X app.
+- 2026-10-24 Ayrshare read-only: key = op://JSW/2gcfiokem5fs7eytutg4b2mgf4/credential. Linked accounts:
+  sienna (default profile) instagram/reddit/tiktok/twitter (no FB/YT); charlotte FB/reddit/tiktok/
+  twitter/YT (no IG); madison, camille, valentina all 6; gabriela IG/reddit/tiktok/twitter/YT (no FB).
+  Profile-Keys for non-Sienna models are NOT in the vault (old: Grok box files) - needed from Sam.
+- 2026-10-24 jsw_post/ayrshare.py: X via Ayrshare - same PASS gate/lint/ledger as geelark.py, gated on
+  Ayrshare linkage per model, x_sensitive -> twitterOptions.possiblySensitive, schedule >= now+2min,
+  dry-run unless --live + /etc/jsw/GO_LIVE. Tested: Sienna dry-run OK; Charlotte blocked (no key).

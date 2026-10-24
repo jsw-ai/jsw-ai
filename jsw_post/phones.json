@@ -10,14 +10,15 @@
    "youtube": "suspended",
    "facebook": "unconfirmed",
    "x": "unconfirmed",
-   "reddit": "none"
+   "reddit": "unconfirmed"
   },
   "platform_notes": {
    "youtube": "Suspended by YouTube; Sam 2026-10-24: no login, no posting. Vault item 'JSW - Sienna - YouTube' is stale.",
    "tiktok": "Logged in 2026-10-24 via Sign in with Google: existing @thesienna_blake (verified on profile).",
    "x": "Blocked 2026-10-24: 'Please use official X apps to proceed or try again later' on Google sign-in, 3 tries incl. Play update to 12.37.2. Escalated to Sam.",
    "instagram": "No Google sign-in on Android; needs username/password - pending Sam's ruling (CLAUDE.md no-password rule).",
-   "facebook": "No Google sign-in on Android; needs username/password - pending Sam's ruling (CLAUDE.md no-password rule)."
+   "facebook": "No Google sign-in on Android; needs username/password - pending Sam's ruling (CLAUDE.md no-password rule).",
+   "reddit": "Ayrshare has Reddit TheSiennaBlake linked (no vault item)."
   }
  },
  "charlotte": {
@@ -71,7 +72,10 @@
    "youtube": "unconfirmed",
    "facebook": "unconfirmed",
    "x": "unconfirmed",
-   "reddit": "none"
+   "reddit": "unconfirmed"
+  },
+  "platform_notes": {
+   "reddit": "Ayrshare has a Reddit account linked (no vault item)."
   }
  },
  "valentina": {
@@ -88,5 +92,6 @@
   "platform_notes": {
    "reddit": "2 vault items incl. '(Google sign-in)'"
   }
- }
+ },
+ "_ayrshare_note": "Ayrshare-linked accounts (ayrshare.py accounts, 2026-10-24) are stronger evidence than vault items. X posts go via Ayrshare (Sam), gated on Ayrshare linkage, not on these phone statuses."
 }
