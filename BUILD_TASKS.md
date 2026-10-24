@@ -86,6 +86,11 @@ your questions, and follow the "try 3 real fixes yourself, then escalate" rule.
   started. Vault check: no model login item has a TOTP field; Sienna has no Gmail item (only
   "Email (wc2026fans)"); Outlook items for charlotte/madison/gabriela/valentina have no password;
   every item has an unlabelled "Field 6" (STRING, 14-17 chars, not TOTP/base32) - meaning unknown.
+- 2026-10-24 Sam ruling: Sam signs in each model's Gmail himself in the GeeLark app; the bot NEVER
+  automates Google sign-in (googleLogin RPA not to be used). After Gmail is in per model, the bot does
+  the social Sign-in-with-Google logins + reads email 2FA codes from that inbox. Phones re-verified
+  ready (6/6 exist, correct name + proxy port, monthly); still unbound (hasBind False) - Sam to bind in
+  the GeeLark app first. Waiting on Sam: per-model "Gmail is in" confirmation.
 
 ## Credentials
 All in 1Password, vault "JSW" (Business): Higgsfield API key, GeeLark (API key + bearer), and every
