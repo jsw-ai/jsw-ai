@@ -134,3 +134,8 @@ created by Sam - ASK SAM for it to wire secrets. Never print credential values.
   MODEL_CONTENT_PROCESS, CONTENT_RECIPE, VALENTINA_PIPELINE, SHARED_LEARNINGS).
 - grok-vm (the old runtime) still holds the photos and any fan data; move them via Sam->Grok using
   the jswxfer rsync path above.
+- 2026-10-24 Sam: Sienna has NO YouTube (suspended) - skip YT for her entirely. Account availability
+  varies per model: jsw_post/phones.json now has a per-model "platforms" map (active / unconfirmed /
+  none / suspended); geelark.py post refuses anything not "active". Seeded from vault titles: all
+  "unconfirmed" except sienna youtube = suspended, sienna + camille reddit = none (no vault item).
+  Nothing is "active" yet - promote per model as Sam confirms / after verified logins.

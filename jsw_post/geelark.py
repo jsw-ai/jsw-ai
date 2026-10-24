@@ -92,11 +92,19 @@ def md5(path):
     return h.hexdigest()
 
 
-def phone_for(model):
-    phones = json.loads(PHONES.read_text())
-    pid = (phones.get(model) or {}).get("envId")
+def phone_for(model, platform=None):
+    """envId for the model's phone; with a platform, also require that account to be 'active'.
+    Account availability varies per model (e.g. Sienna's YouTube is suspended) - never assume."""
+    entry = json.loads(PHONES.read_text()).get(model) or {}
+    pid = entry.get("envId")
     if not pid:
         raise GateError(f"no GeeLark phone mapped for {model} in {PHONES}")
+    if platform:
+        st = (entry.get("platforms") or {}).get(platform, "none")
+        if st != "active":
+            note = (entry.get("platform_notes") or {}).get(platform, "")
+            raise GateError(f"{model} {platform} account is '{st}', not 'active' - skip"
+                            + (f" ({note})" if note else "") + f"; confirm per model in {PHONES.name}")
     return pid
 
 
@@ -198,7 +206,7 @@ def post(pass_path, platform, at=None, live=False):
     p = json.loads(Path(pass_path).read_text())
     digest, plat = check_pass(p, platform)
     model = p["model"]
-    env_id = phone_for(model)
+    env_id = phone_for(model, platform)
     at = int(at or time.time())
     prior = ledger_find(model, platform, digest)
     if prior:
