@@ -79,6 +79,13 @@ your questions, and follow the "try 3 real fixes yourself, then escalate" rule.
   91-model catalog (no Seedream), empty custom-references. Test gen -> 403 not_enough_credits, 0 spent.
   Higgsfield help center: API bills a separate prepaid USD balance (top up at open.higgsfield.ai,
   min $5); plan credits apply only to web app / MCP / CLI.
+- 2026-10-24 Login order (ANSWERS5): Gmail first on each phone, then social apps via Sign in with
+  Google; Google new-device challenges -> Sam after 3 tries. Planned tool: GeeLark rpa/task/googleLogin
+  (email, password, code2fa), then per-app logins. NOT built/run yet: (a) conflicts with CLAUDE.md
+  "won't type a password into a login form" - needs Sam's explicit ruling; (b) phones unbound/not
+  started. Vault check: no model login item has a TOTP field; Sienna has no Gmail item (only
+  "Email (wc2026fans)"); Outlook items for charlotte/madison/gabriela/valentina have no password;
+  every item has an unlabelled "Field 6" (STRING, 14-17 chars, not TOTP/base32) - meaning unknown.
 
 ## Credentials
 All in 1Password, vault "JSW" (Business): Higgsfield API key, GeeLark (API key + bearer), and every
