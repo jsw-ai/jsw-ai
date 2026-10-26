@@ -1,40 +1,49 @@
 #!/usr/bin/env python3
-import json, ssl, urllib.request, urllib.error
+"""Read-only Higgsfield auth check + Soul 2 cost quote. Generates nothing.
+
+The platform API has no credit-balance endpoint (probed 2026-10-26: /credits, /balance, /wallet,
+/account, /me ... all 404/405 on platform.* and api.*, GET and POST; the official SDK has none
+either). The API balance is visible only in the console (cloud.higgsfield.ai / open.higgsfield.ai
+Billing); an empty balance surfaces as 403 not_enough_credits on submit.
+"""
+import json, sys, time, urllib.error, urllib.request
 from pathlib import Path
-p = Path("/home/box/agent-data/connector-secrets/b03764fa-1acf-4eb6-b1e0-b6890366beb7/Higgsfield.json")
-d = json.loads(p.read_text())
-key, secret = d["HF_API_KEY"], d["HF_SECRET"]
-ctx = ssl.create_default_context()
-H = {"Authorization": f"Key {key}:{secret}", "Accept": "application/json", "Content-Type": "application/json", "User-Agent": "higgsfield-client-py/1.0"}
-base = "https://platform.higgsfield.ai"
 
-def call(method, url, body=None):
-    data = None if body is None else json.dumps(body).encode()
-    req = urllib.request.Request(url, data=data, method=method, headers=H)
+sys.path.insert(0, str(Path(__file__).parent))
+from hf_creds import BASE, headers
+
+SIENNA = "ba97f512-0ed0-4c56-9480-5abe167b06d1"  # approved baseline soul (HIGGSFIELD_EXPERT_GUIDE)
+
+
+def call(method, path, body=None, h=None):
+    req = urllib.request.Request(BASE + path, method=method, headers=h,
+                                 data=None if body is None else json.dumps(body).encode())
     try:
-        with urllib.request.urlopen(req, timeout=25, context=ctx) as resp:
-            return resp.status, resp.read(2000).decode("utf-8", "replace")
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return r.status, r.read().decode("utf-8", "replace")
     except urllib.error.HTTPError as e:
-        return e.code, e.read(2000).decode("utf-8", "replace")
-    except Exception as e:
-        return 0, type(e).__name__
+        return e.code, e.read(500).decode("utf-8", "replace")
 
-print("=== ACCOUNT ===")
-for path in ["/account", "/v1/account", "/me", "/v1/me", "/credits", "/v1/credits", "/billing", "/user", "/v1/user", "/organizations", "/v1/organizations"]:
-    code, raw = call("GET", base+path)
-    print(f"GET {path} HTTP {code} {raw[:250]}")
 
-print("=== RETRY GEN cheaper ===")
-SIENNA = "f9700355-bf71-4d6f-bec5-e87142075794"
-PROMPT = "Candid iPhone photo, natural daylight, pore-level skin texture, natural tan, relaxed natural body. Gold Coast woman, tank and shorts. NOT airbrushed, NOT glossy, NOT plastic, NOT cinematic."
-for label, body in [
-    ("min", {"prompt": PROMPT, "soul_id": SIENNA, "aspect_ratio": "3:4"}),
-    ("q15", {"prompt": PROMPT, "soul_id": SIENNA, "aspect_ratio": "3:4", "quality": "1.5k"}),
-    ("no_soul", {"prompt": "plain landscape test unused", "aspect_ratio": "1:1"}),
-]:
-    code, raw = call("POST", base+"/estimate/higgsfield-ai/soul/v2/standard", body)
-    print(f"EST {label} HTTP {code} {raw[:200]}")
-    # do NOT submit no_soul generation; only cheaper sienna if estimate is tiny
-    if label != "no_soul":
-        code, raw = call("POST", base+"/higgsfield-ai/soul/v2/standard", body)
-        print(f"GEN {label} HTTP {code} {raw[:300]}")
+def authed_headers():
+    """hf-api-key/hf-secret; on 401 wait 60s once (Sam may be saving a regenerated key) and retry."""
+    for attempt in range(2):
+        h = headers()
+        s, _ = call("GET", "/models?page=1&page_size=1", h=h)
+        if s != 401:
+            return h, s
+        if attempt == 0:
+            print("AUTH 401 - waiting 60s for a possibly just-saved key, then retrying", flush=True)
+            time.sleep(60)
+    return h, s
+
+
+if __name__ == "__main__":
+    h, s = authed_headers()
+    print("AUTH", "OK" if s == 200 else f"FAILED HTTP {s}")
+    if s != 200:
+        sys.exit(1)
+    print("BALANCE n/a via API (no endpoint) - check the Higgsfield console Billing page")
+    s, t = call("POST", "/estimate/higgsfield-ai/soul/v2/standard",
+                {"prompt": "portrait", "soul_id": SIENNA, "aspect_ratio": "3:4", "quality": "2k"}, h)
+    print("ESTIMATE soul/v2/standard 2k:", s, t)
