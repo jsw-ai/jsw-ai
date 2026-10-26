@@ -167,7 +167,7 @@ created by Sam - ASK SAM for it to wire secrets. Never print credential values.
 - 2026-10-24 jsw_post/ayrshare.py: X via Ayrshare - same PASS gate/lint/ledger as geelark.py, gated on
   Ayrshare linkage per model, x_sensitive -> twitterOptions.possiblySensitive, schedule >= now+2min,
   dry-run unless --live + /etc/jsw/GO_LIVE. Tested: Sienna dry-run OK; Charlotte blocked (no key).
-- 2026-10-26 HF_FIX: hf-test/hf_creds.py loads creds from 1Password (username/password, or username split
+- 2026-10-26 HF_FIX: hf-test/hf_auth.py loads creds from 1Password (username/password, or username split
   on first ':'), headers hf-api-key/hf-secret. balance.py rewritten read-only (auth + estimate; it used to
   generate). gen_sienna.py repointed (op creds, soul ba97f512, quote first, 401 -> wait 60s retry once,
   PNG out). Auth 200; no balance endpoint exists in the API/SDK. Test gen -> 403 not_enough_credits,

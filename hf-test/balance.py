@@ -10,7 +10,7 @@ import json, sys, time, urllib.error, urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from hf_creds import BASE, headers
+from hf_auth import BASE, headers
 
 SIENNA = "ba97f512-0ed0-4c56-9480-5abe167b06d1"  # approved baseline soul (HIGGSFIELD_EXPERT_GUIDE)
 
