@@ -16,7 +16,7 @@ BODY = {"prompt": "Candid iPhone portrait, soft daylight evenly lit from the fro
                   "smile, woman in a plain white t-shirt on a sunny cafe terrace, head and shoulders, "
                   "natural unretouched skin texture.",
         "soul_id": SIENNA, "aspect_ratio": "3:4", "quality": "2k"}
-LOG = Path("/opt/jsw-data/hf_smoke_sienna.json")
+LOG = Path(f"/opt/jsw-data/hf_smoke{OUT.stem.removeprefix('_sienna_test')}_sienna.json")
 
 h, s = authed_headers()
 if s != 200:

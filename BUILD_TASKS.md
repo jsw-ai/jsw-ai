@@ -172,3 +172,6 @@ created by Sam - ASK SAM for it to wire secrets. Never print credential values.
   generate). gen_sienna.py repointed (op creds, soul ba97f512, quote first, 401 -> wait 60s retry once,
   PNG out). Auth 200; no balance endpoint exists in the API/SDK. Test gen -> 403 not_enough_credits,
   0 spent, no image. Status in /opt/jsw/hf_status.txt.
+- 2026-10-26 HF (API funded): 2 Soul 2 runs completed, 0.100 cr total (d53ea04a, 3d42a355) -> /var/www/html/_sienna_test{,2}.png.
+  Identity gate FAIL (0.077/0.045): soul ba97f512 is not on the API account (custom-references list = 0),
+  and the API drops unknown fields without error. Escalated options (API Soul at 40 cr / image-to-image / share soul). See hf_status.txt.
